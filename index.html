@@ -57,11 +57,7 @@
     }
 
     .layout {
-      width: min(1100px, 100%);
-      display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.95fr);
-      gap: 24px;
-      align-items: stretch;
+      width: min(940px, 100%);
     }
 
     .panel {
@@ -76,13 +72,6 @@
       padding: clamp(28px, 5vw, 56px);
       display: grid;
       gap: 20px;
-    }
-
-    .signup {
-      padding: 28px;
-      display: grid;
-      align-content: start;
-      gap: 18px;
       background: var(--cream-strong);
     }
 
@@ -96,7 +85,6 @@
     }
 
     h1,
-    h2,
     .detail strong {
       font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
       font-weight: 700;
@@ -108,12 +96,6 @@
       max-width: 8ch;
       font-size: clamp(2.8rem, 6vw, 5.2rem);
       line-height: 0.94;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 2rem;
-      line-height: 1.05;
     }
 
     .lede {
@@ -130,9 +112,7 @@
       padding-top: 4px;
     }
 
-    .primary-cta,
-    .secondary-cta,
-    .signup-form button {
+    .primary-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -146,25 +126,14 @@
       transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
     }
 
-    .primary-cta,
-    .signup-form button {
+    .primary-cta {
       color: #fff7f1;
       background: linear-gradient(135deg, var(--accent), var(--accent-deep));
       box-shadow: 0 16px 30px rgba(111, 44, 24, 0.22);
     }
 
-    .secondary-cta {
-      color: var(--ink);
-      border-color: rgba(36, 22, 16, 0.16);
-      background: rgba(255, 255, 255, 0.38);
-    }
-
     .primary-cta:hover,
-    .primary-cta:focus-visible,
-    .secondary-cta:hover,
-    .secondary-cta:focus-visible,
-    .signup-form button:hover,
-    .signup-form button:focus-visible {
+    .primary-cta:focus-visible {
       transform: translateY(-1px);
     }
 
@@ -184,63 +153,24 @@
     }
 
     .detail p,
-    .signup p,
-    .signup-note {
+    .hero>p:not(.lede),
+    .kicker {
       color: var(--muted);
     }
 
-    .signup-form {
-      display: grid;
-      gap: 12px;
-    }
-
-    .signup-form input[type="email"] {
-      width: 100%;
-      min-height: 54px;
-      padding: 0 16px;
-      border: 1px solid rgba(36, 22, 16, 0.16);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.86);
-      font: inherit;
-      color: var(--ink);
-    }
-
-    .signup-form input[type="email"]::placeholder {
-      color: rgba(36, 22, 16, 0.5);
-    }
-
-    .signup-form input[type="email"]:focus,
-    .signup-form button:focus,
-    .primary-cta:focus,
-    .secondary-cta:focus {
+    .primary-cta:focus {
       outline: 2px solid rgba(147, 64, 38, 0.34);
       outline-offset: 3px;
     }
 
-    .signup-note {
-      font-size: 0.95rem;
-    }
-
-    .honeypot,
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+    .kicker {
+      font-size: 1rem;
+      font-weight: 600;
     }
 
     @media (max-width: 900px) {
       body {
         background-attachment: scroll;
-      }
-
-      .layout {
-        grid-template-columns: 1fr;
       }
 
       h1 {
@@ -257,8 +187,7 @@
         border-radius: 22px;
       }
 
-      .hero,
-      .signup {
+      .hero {
         padding: 22px;
       }
 
@@ -266,9 +195,7 @@
         grid-template-columns: 1fr;
       }
 
-      .primary-cta,
-      .secondary-cta,
-      .signup-form button {
+      .primary-cta {
         width: 100%;
       }
     }
@@ -281,12 +208,16 @@
       <section class="panel hero" aria-labelledby="site-title">
         <p class="eyebrow">Fresh Local Food, Every Week</p>
         <h1 id="site-title">Bold Love Farm &amp; Bakery</h1>
-        <p class="lede">Seasonal produce, breads, pastries, and prepared foods grown and made with care, then offered through one easy weekly shop.</p>
-        <p>We grow food in ways that restore wildlife habitat, enrich the soil, and avoid harmful chemicals. Our baked goods and prepared foods are handcrafted with the best ingredients we can find, so the weekly menu brings together fresh produce, real meals, and pantry favorites in one place.</p>
+        <p class="lede">Seasonal produce, breads, pastries, and prepared foods grown and made with care, then offered
+          through our online store.</p>
+        <p>We grow food in ways that restore wildlife habitat, enrich the soil, and avoid harmful chemicals. Our baked
+          goods and prepared foods are handcrafted with the best ingredients we can find, so the shop brings together
+          fresh produce, real meals, and pantry favorites in one place.</p>
+        <p class="kicker">Shop online for this week&rsquo;s produce, prepared foods, breads, pastries, and partner goods
+          like honey, eggs, meat, and cheese.</p>
         <div class="cta-row">
           <a class="primary-cta" href="https://grownby.com/farms/bold-love-farm-bakery/shop" target="_blank"
             rel="noopener noreferrer">Shop The Online Store</a>
-          <a class="secondary-cta" href="#mailing-list">Get The Sunday Menu</a>
         </div>
         <div class="details" aria-label="What you will find">
           <div class="detail">
@@ -294,39 +225,19 @@
             <p>Produce, breads, pastries, prepared foods, and a weekly lineup that is meant to feed people well.</p>
           </div>
           <div class="detail">
-            <strong>What the email includes</strong>
-            <p>Every Sunday we send the latest menu with a direct link to the online store and the items available that week.</p>
+            <strong>How we grow</strong>
+            <p>Our produce is grown to restore habitat, enrich soil, and avoid harmful chemicals.</p>
           </div>
           <div class="detail">
-            <strong>Partner goods too</strong>
-            <p>You will also find favorites from our partners, including honey, eggs, meat, cheese, and other local staples.</p>
+            <strong>What we make</strong>
+            <p>Breads, pastries, and prepared foods are handcrafted with the best ingredients we can find.</p>
           </div>
           <div class="detail">
-            <strong>Questions welcome</strong>
-            <p>Pickup times, delivery areas, menu details, or feedback: we want the page to make it easy to stay in touch.</p>
+            <strong>What else you will find</strong>
+            <p>The shop also includes partner goods like honey, eggs, meat, cheese, and other local staples.</p>
           </div>
         </div>
       </section>
-
-      <aside class="panel signup" id="mailing-list" aria-labelledby="mailing-list-title">
-        <p class="eyebrow">Weekly Updates</p>
-        <h2 id="mailing-list-title">Join the mailing list</h2>
-        <p>Get the Sunday email with the week&rsquo;s store link plus updates on produce, prepared foods, breads, pastries, and partner offerings.</p>
-        <form
-          action="https://boldlovebakery.us21.list-manage.com/subscribe/post?u=c1e0805d9318df47dc11e74a1&amp;id=210652ad15&amp;f_id=009497e6f0"
-          method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank"
-          class="signup-form">
-          <label class="sr-only" for="mce-EMAIL">Email address</label>
-          <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required
-            placeholder="Email address">
-          <input type="hidden" name="tags" value="2965484,2991846">
-          <div aria-hidden="true" class="honeypot">
-            <input type="text" name="b_c1e0805d9318df47dc11e74a1_210652ad15" tabindex="-1" value="">
-          </div>
-          <button type="submit" name="subscribe" id="mc-embedded-subscribe">Join The Mailing List</button>
-        </form>
-        <p class="signup-note">Expect one email each Sunday with the current menu and a quick path to order.</p>
-      </aside>
     </div>
   </main>
 </body>
