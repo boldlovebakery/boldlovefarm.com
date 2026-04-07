@@ -24,6 +24,9 @@ After this change, a visitor loading `index.html` should see a short introductio
 - [x] (2026-04-07 18:41Z) Verified locally that the updated page and logo both return HTTP 200 and that the served HTML contains the logo reference, the shop CTA, and the new gold-based palette variables.
 - [x] (2026-04-07 19:36Z) Replaced the repetitive secondary product-list copy with organic and locality language, and incorporated the user-approved weekly-shop sentence as supporting brand copy.
 - [x] (2026-04-07 19:36Z) Added a discreet official USDA Organic seal using the USDA AMS black-and-white asset so the organic claim is visually supported without competing with the Bold Love logo.
+- [x] (2026-04-07 19:59Z) Added a real footer with brand, shop, certification, and copyright information, and moved the USDA badge out of the hero into that footer area.
+- [x] (2026-04-07 20:04Z) Refined the footer copy to mention the Mount Airy, Maryland community and expanded the certification note to “Certified fruit and produce from our farm.”
+- [x] (2026-04-07 20:14Z) Moved the Mount Airy line onto the same footer row as the copyright, on the opposite side, with a mobile stack fallback.
 - [x] (2026-04-07 18:05Z) Updated this ExecPlan so it matches the final, simplified scope.
 
 ## Surprises & Discoveries
@@ -45,6 +48,9 @@ After this change, a visitor loading `index.html` should see a short introductio
 
 - Observation: The two short hero lines were partially duplicating each other because both mainly described the product mix.
   Evidence: One line listed seasonal produce, breads, pastries, and prepared foods, while the other repeated nearly the same inventory in slightly different words.
+
+- Observation: The USDA badge worked better as supporting trust information than as hero content.
+  Evidence: Moving it out of the hero allowed the top section to stay focused on the brand and main message while still keeping the certification visible lower on the page.
 
 ## Decision Log
 
@@ -88,6 +94,22 @@ After this change, a visitor loading `index.html` should see a short introductio
   Rationale: The official USDA page provides a black-and-white version of the seal that fits the black-and-gold page much better than the green-and-brown seal, while still making the organic claim feel official and discrete.
   Date/Author: 2026-04-07 / Codex
 
+- Decision: Put the USDA badge in the footer rather than the hero.
+  Rationale: The user asked for it to move out of the top of the page, and footer placement keeps it visible without competing with the logo, headline, and primary call to action.
+  Date/Author: 2026-04-07 / Codex
+
+- Decision: Add a compact footer with the brand name, a shop link, certification information, and copyright.
+  Rationale: Those are the core footer elements visitors generally expect on a simple brand landing page, and they make the page feel more complete without inventing contact details we do not have.
+  Date/Author: 2026-04-07 / Codex
+
+- Decision: Mention Mount Airy, Maryland explicitly in the footer.
+  Rationale: The user wanted the local community called out, and the footer is an appropriate place for a grounded location statement that does not interrupt the hero.
+  Date/Author: 2026-04-07 / Codex
+
+- Decision: Put the Mount Airy line on the same footer row as the copyright on larger screens.
+  Rationale: This reads more like a conventional footer and keeps the footer brand block itself tighter.
+  Date/Author: 2026-04-07 / Codex
+
 ## Outcomes & Retrospective
 
 The landing page is now a simple store-first homepage. It introduces Bold Love Farm & Bakery, explains the produce and prepared-food offering, integrates the brand logo into the hero, and directs people to the GrownBy shop without mentioning mailing-list signup at all.
@@ -110,6 +132,9 @@ Keep the visual system intentionally small. Reuse the existing background image,
 
 Use the hero copy carefully so each line adds new information. The main lede should explain what is sold. The supporting line should explain why it is distinctive, in this case USDA-certified organic produce grown close to home and food that is less traveled.
 
+Use the footer for secondary trust and support information. Put the USDA certification there instead of in the hero, and include a direct shop link plus a simple brand/copyright line so the page ends with the information visitors typically expect.
+Include a local-community line in the footer when that is part of the brand story.
+
 After the HTML edit, verify the page locally by serving the repository, requesting the page over HTTP, and checking for two things in the served output: the presence of the store button text and the absence of mailing-list or Sunday-menu text.
 
 ## Concrete Steps
@@ -120,7 +145,7 @@ Inspect the current page for leftover signup and Sunday-menu language:
 
     rg -n "Weekly Updates|Join the mailing list|Sunday|mailing|Get The Sunday Menu|shop" index.html
 
-Edit `index.html` to remove the Mailchimp script, remove the signup panel, remove the secondary menu button, tighten the intro copy around the online store, integrate the logo using the URL-encoded image path `BL_Logo_blackyellow_F%26B.png`, and restyle the page so the palette and CTA follow the logo’s black-and-gold brand direction. Add a small official USDA Organic seal using the USDA AMS black-and-white asset if the badge can be kept visually secondary.
+Edit `index.html` to remove the signup panel, tighten the intro copy around the online store, integrate the logo using the URL-encoded image path `BL_Logo_blackyellow_F%26B.png`, and restyle the page so the palette and CTA follow the logo’s black-and-gold brand direction. Add a compact footer with the brand line, a shop link, the USDA organic badge, and a copyright line. Keep the USDA badge in the footer rather than the hero.
 
 Verify that the unwanted strings are gone from the file:
 
@@ -186,13 +211,44 @@ Observed output included:
     343:            <p class="support-copy">Our produce is USDA-certified organic, grown close to home, and harvested for the weekly shop instead of shipped across the country. We bake and cook with the same care, so the food reaches you fresh, local, and relatively untraveled.</p>
     350:            <p class="brand-note">The weekly shop brings together what we grow, what we bake, what we cook, and a handful of staples from local partners.</p>
 
+Confirm that the footer and relocated USDA badge appear in the served HTML:
+
+    curl -s http://127.0.0.1:8000/ | rg -n "site-footer|Shop Online|USDA Certified Organic|RT_BlackandWhiteOrganicSeal.gif|Fresh Local Food, Every Week"
+
+Observed output included:
+
+    420:        <footer class="site-footer" aria-label="Site footer">
+    427:              rel="noopener noreferrer">Shop Online</a>
+    430:                <img src="https://www.ams.usda.gov/sites/default/files/media/RT_BlackandWhiteOrganicSeal.gif"
+    434:                <div class="footer-cert-title">USDA Certified Organic</div>
+
+Confirm that the footer copy refinements appear in the served HTML:
+
+    curl -s http://127.0.0.1:8000/ | rg -n "Mount Airy, Maryland|Certified fruit and produce from our farm|USDA Certified Organic|Shop Online"
+
+Observed output included:
+
+    430:              <p class="footer-community">Proudly part of the Mount Airy, Maryland community.</p>
+    440:                <div class="footer-cert-title">USDA Certified Organic</div>
+    441:                <div class="footer-cert-note">Certified fruit and produce from our farm.</div>
+
+Confirm that the copyright and Mount Airy line now share the footer meta row:
+
+    curl -s http://127.0.0.1:8000/ | rg -n "footer-meta|Mount Airy, Maryland|&copy; 2026 Bold Love Farm|Shop Online"
+
+Observed output included:
+
+    462:          <div class="footer-meta">
+    463:            <p class="footer-note">&copy; 2026 Bold Love Farm &amp; Bakery</p>
+    464:            <p class="footer-community">Proudly part of the Mount Airy, Maryland community.</p>
+
 ## Validation and Acceptance
 
-Acceptance is now straightforward. When a visitor loads the page, they should see Bold Love Farm & Bakery introduced in plain language, the logo integrated into the hero, a page palette that feels visibly tied to the logo colors, a small USDA Organic badge that does not overpower the main brand, and a clear button to shop online. There should be no visible signup section, no mailing-list wording, and no Sunday-menu invitation.
+Acceptance is now straightforward. When a visitor loads the page, they should see Bold Love Farm & Bakery introduced in plain language, the logo integrated into the hero, a page palette that feels visibly tied to the logo colors, a clear button to shop online, and a footer containing the expected support information. The USDA badge should be visible in that footer without overpowering the main brand. There should be no visible signup section or Sunday-menu invitation in the main page content.
 
-Local verification passed. `curl -I http://127.0.0.1:8000/` returned `HTTP/1.0 200 OK`, which confirms the static page still serves normally. `curl -I http://127.0.0.1:8000/BL_Logo_blackyellow_F%26B.png` also returned `HTTP/1.0 200 OK`, confirming the logo asset path is correct. The served HTML contains `Shop The Online Store`, references the logo image, references the official USDA AMS seal asset, and contains the revised organic/local copy.
+Local verification passed. `curl -I http://127.0.0.1:8000/` returned `HTTP/1.0 200 OK`, which confirms the static page still serves normally. The served HTML contains the relocated footer, the shop link, the official USDA AMS seal asset, and the revised organic/local copy.
 
-The final browser-side acceptance check is visual: a human reviewer should open the page and confirm the logo feels appropriately sized, is clearly circular rather than square, the top hero area reads as a deliberate copy-plus-logo layout, the USDA badge feels discrete rather than promotional, the lower cards still span the panel cleanly, the black-and-gold palette feels consistent with the logo, and the store link is immediately obvious.
+The final browser-side acceptance check is visual: a human reviewer should open the page and confirm the logo feels appropriately sized, the top hero area stays focused, the footer feels complete rather than tacked on, the Mount Airy line and copyright balance each other on one row at desktop sizes, the USDA badge reads as trust information rather than hero branding, the black-and-gold palette feels consistent with the logo, and the store link is immediately obvious.
 
 ## Idempotence and Recovery
 
@@ -209,10 +265,10 @@ The final page now includes:
 - A single centered content panel over the farm background image.
 - Introductory copy explaining Bold Love Farm & Bakery.
 - A black, gold, and cream palette aligned with the logo colors.
-- A discreet official USDA Organic badge using the USDA AMS black-and-white seal.
 - The black-and-yellow Bold Love logo in a dedicated circular hero frame.
 - A prominent button linking to the GrownBy store.
-- Supporting detail cards that explain what the farm offers, how it grows, what it makes, and what else the shop includes.
+- A footer with the brand line, a shop link, the USDA Organic badge, and copyright text.
+- A footer line stating the farm is proudly part of the Mount Airy, Maryland community.
 
 The final page no longer includes:
 
@@ -220,7 +276,7 @@ The final page no longer includes:
 - Any signup form or mailing-list panel.
 - Any call to “join the mailing list” or “get the Sunday menu.”
 
-Revision note: Updated on 2026-04-07 after integrating the new logo asset and restructuring the hero so the top section uses an intentional copy-plus-logo layout rather than appearing to have an empty right column. The logo treatment was then refined from a rounded square to a true circle, and the page palette plus CTA styling were reworked to follow the logo’s black-and-gold brand colors more directly. This revision also records verification of the URL-encoded logo asset path.
+Revision note: Updated on 2026-04-07 after integrating the new logo asset and restructuring the hero so the top section uses an intentional copy-plus-logo layout rather than appearing to have an empty right column. The logo treatment was then refined from a rounded square to a true circle, the page palette plus CTA styling were reworked to follow the logo’s black-and-gold brand colors more directly, and the USDA organic badge was moved from the hero into a more conventional footer alongside other support information.
 
 ## Interfaces and Dependencies
 
