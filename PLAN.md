@@ -27,6 +27,7 @@ After this change, a visitor loading `index.html` should see a short introductio
 - [x] (2026-04-07 19:59Z) Added a real footer with brand, shop, certification, and copyright information, and moved the USDA badge out of the hero into that footer area.
 - [x] (2026-04-07 20:04Z) Refined the footer copy to mention the Mount Airy, Maryland community and expanded the certification note to “Certified fruit and produce from our farm.”
 - [x] (2026-04-07 20:14Z) Moved the Mount Airy line onto the same footer row as the copyright, on the opposite side, with a mobile stack fallback.
+- [x] (2026-04-07 20:23Z) Rebuilt `favicon.ico` from `BL_Logo_blackyellow_F&B.png` so the favicon now uses the current Bold Love logo.
 - [x] (2026-04-07 18:05Z) Updated this ExecPlan so it matches the final, simplified scope.
 
 ## Surprises & Discoveries
@@ -110,6 +111,10 @@ After this change, a visitor loading `index.html` should see a short introductio
   Rationale: This reads more like a conventional footer and keeps the footer brand block itself tighter.
   Date/Author: 2026-04-07 / Codex
 
+- Decision: Regenerate the favicon from the current logo asset.
+  Rationale: The user explicitly asked for the favicon to match the current brand logo, and the existing page already references `favicon.ico` in the document head.
+  Date/Author: 2026-04-07 / Codex
+
 ## Outcomes & Retrospective
 
 The landing page is now a simple store-first homepage. It introduces Bold Love Farm & Bakery, explains the produce and prepared-food offering, integrates the brand logo into the hero, and directs people to the GrownBy shop without mentioning mailing-list signup at all.
@@ -134,6 +139,7 @@ Use the hero copy carefully so each line adds new information. The main lede sho
 
 Use the footer for secondary trust and support information. Put the USDA certification there instead of in the hero, and include a direct shop link plus a simple brand/copyright line so the page ends with the information visitors typically expect.
 Include a local-community line in the footer when that is part of the brand story.
+Keep `favicon.ico` aligned with the current brand mark used in the page.
 
 After the HTML edit, verify the page locally by serving the repository, requesting the page over HTTP, and checking for two things in the served output: the presence of the store button text and the absence of mailing-list or Sunday-menu text.
 
@@ -242,13 +248,23 @@ Observed output included:
     463:            <p class="footer-note">&copy; 2026 Bold Love Farm &amp; Bakery</p>
     464:            <p class="footer-community">Proudly part of the Mount Airy, Maryland community.</p>
 
+Confirm that the favicon path serves the regenerated logo-based icon:
+
+    curl -I http://127.0.0.1:8000/favicon.ico
+    file favicon.ico
+
+Observed output included:
+
+    HTTP/1.0 200 OK
+    favicon.ico: MS Windows icon resource - 1 icon, 256x256 with PNG image data
+
 ## Validation and Acceptance
 
 Acceptance is now straightforward. When a visitor loads the page, they should see Bold Love Farm & Bakery introduced in plain language, the logo integrated into the hero, a page palette that feels visibly tied to the logo colors, a clear button to shop online, and a footer containing the expected support information. The USDA badge should be visible in that footer without overpowering the main brand. There should be no visible signup section or Sunday-menu invitation in the main page content.
 
 Local verification passed. `curl -I http://127.0.0.1:8000/` returned `HTTP/1.0 200 OK`, which confirms the static page still serves normally. The served HTML contains the relocated footer, the shop link, the official USDA AMS seal asset, and the revised organic/local copy.
 
-The final browser-side acceptance check is visual: a human reviewer should open the page and confirm the logo feels appropriately sized, the top hero area stays focused, the footer feels complete rather than tacked on, the Mount Airy line and copyright balance each other on one row at desktop sizes, the USDA badge reads as trust information rather than hero branding, the black-and-gold palette feels consistent with the logo, and the store link is immediately obvious.
+The final browser-side acceptance check is visual: a human reviewer should open the page and confirm the logo feels appropriately sized, the top hero area stays focused, the footer feels complete rather than tacked on, the Mount Airy line and copyright balance each other on one row at desktop sizes, the USDA badge reads as trust information rather than hero branding, the black-and-gold palette feels consistent with the logo, the store link is immediately obvious, and the browser tab now shows the logo-based favicon.
 
 ## Idempotence and Recovery
 
@@ -269,6 +285,7 @@ The final page now includes:
 - A prominent button linking to the GrownBy store.
 - A footer with the brand line, a shop link, the USDA Organic badge, and copyright text.
 - A footer line stating the farm is proudly part of the Mount Airy, Maryland community.
+- A favicon generated from the current Bold Love logo.
 
 The final page no longer includes:
 
