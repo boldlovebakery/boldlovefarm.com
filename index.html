@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bold Love Farm &amp; Bakery</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- DO NOT REMOVE -->
+  <script
+    id="mcjs">!function (c, h, i, m, p) { m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p) }(document, "script", "https://chimpstatic.com/mcjs-connected/js/users/c1e0805d9318df47dc11e74a1/121b62670c533dbcbe2fbe33f.js");</script>
+  <!-- DO NOT REMOVE -->
   <style type="text/css">
     :root {
       --ink: #130d0a;
@@ -87,6 +91,13 @@
       min-width: 0;
     }
 
+    .hero-flags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
     .hero-brand {
       display: grid;
       gap: 18px;
@@ -128,6 +139,25 @@
       color: var(--ink);
       background: var(--gold-soft);
       box-shadow: inset 0 0 0 1px rgba(244, 190, 23, 0.28);
+    }
+
+    .organic-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 58px;
+      height: 58px;
+      padding: 6px;
+      border-radius: 50%;
+      background: rgba(255, 252, 245, 0.92);
+      border: 1px solid rgba(19, 13, 10, 0.1);
+      box-shadow: 0 10px 22px rgba(19, 13, 10, 0.08);
+    }
+
+    .organic-badge img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     h1,
@@ -249,6 +279,10 @@
         justify-self: start;
       }
 
+      .hero-flags {
+        align-items: flex-start;
+      }
+
       .hero-brand {
         justify-items: start;
       }
@@ -296,47 +330,35 @@
       <section class="panel hero" aria-labelledby="site-title">
         <div class="hero-top">
           <div class="hero-copy">
-            <p class="eyebrow">Fresh Local Food, Every Week</p>
+            <div class="hero-flags">
+              <p class="eyebrow">Fresh Local Food, Every Week</p>
+              <span class="organic-badge">
+                <img src="https://www.ams.usda.gov/sites/default/files/media/RT_BlackandWhiteOrganicSeal.gif"
+                  alt="USDA Organic seal" width="84" height="84">
+              </span>
+            </div>
             <h1 id="site-title">Bold Love Farm &amp; Bakery</h1>
-            <p class="lede">Seasonal produce, breads, pastries, and prepared foods grown and made with care, then offered
+            <p class="lede">Seasonal produce, breads, pastries, and prepared foods grown and made with care, then
+              offered
               through our online store.</p>
             <div class="cta-row">
               <a class="primary-cta" href="https://grownby.com/farms/bold-love-farm-bakery/shop" target="_blank"
                 rel="noopener noreferrer">Shop The Online Store</a>
             </div>
-            <p class="support-copy">We grow food in ways that restore wildlife habitat, enrich the soil, and avoid harmful chemicals. Our baked
-              goods and prepared foods are handcrafted with the best ingredients we can find, so the shop brings together
-              fresh produce, real meals, and pantry favorites in one place.</p>
+            <p class="support-copy">Our produce is USDA-certified organic, grown close to home, and gets to you shortly
+              after it comes out of the ground. We bake and cook with the same care, so the food
+              reaches you fresh, local, and full of nutrition.</p>
           </div>
           <div class="hero-brand">
             <div class="logo-frame">
-              <img class="logo-mark" src="BL_Logo_blackyellow_F%26B.png" alt="Bold Love Farm and Bakery logo" width="600"
-                height="600">
+              <img class="logo-mark" src="BL_Logo_blackyellow_F%26B.png" alt="Bold Love Farm and Bakery logo"
+                width="600" height="600">
             </div>
-            <p class="brand-note">Produce, breads, pastries, prepared foods, and partner goods like honey, eggs, meat, and cheese.</p>
+            <p class="brand-note">The weekly shop brings together what we grow, what we bake, what we cook, and what we
+              share from our local partners.</p>
           </div>
         </div>
-        <div class="hero-bottom">
-          <p class="section-intro">From our farm and kitchen to your table: the shop is where you will find the week&rsquo;s produce, prepared foods, breads, pastries, and carefully chosen goods from local partners.</p>
-          <div class="details" aria-label="What you will find">
-            <div class="detail">
-              <strong>What we offer</strong>
-              <p>Produce, breads, pastries, prepared foods, and a weekly lineup that is meant to feed people well.</p>
-            </div>
-            <div class="detail">
-              <strong>How we grow</strong>
-              <p>Our produce is grown to restore habitat, enrich soil, and avoid harmful chemicals.</p>
-            </div>
-            <div class="detail">
-              <strong>What we make</strong>
-              <p>Breads, pastries, and prepared foods are handcrafted with the best ingredients we can find.</p>
-            </div>
-            <div class="detail">
-              <strong>What else you will find</strong>
-              <p>The shop also includes partner goods like honey, eggs, meat, cheese, and other local staples.</p>
-            </div>
-          </div>
-        </div>
+
       </section>
     </div>
   </main>

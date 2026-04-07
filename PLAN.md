@@ -22,6 +22,8 @@ After this change, a visitor loading `index.html` should see a short introductio
 - [x] (2026-04-07 18:41Z) Reworked the color system to align with the logo’s black, gold, and cream palette instead of the earlier brown, rust, and green combination.
 - [x] (2026-04-07 18:41Z) Moved the main store CTA higher in the reading order and restructured the hero into a clear top composition plus a separated lower information band.
 - [x] (2026-04-07 18:41Z) Verified locally that the updated page and logo both return HTTP 200 and that the served HTML contains the logo reference, the shop CTA, and the new gold-based palette variables.
+- [x] (2026-04-07 19:36Z) Replaced the repetitive secondary product-list copy with organic and locality language, and incorporated the user-approved weekly-shop sentence as supporting brand copy.
+- [x] (2026-04-07 19:36Z) Added a discreet official USDA Organic seal using the USDA AMS black-and-white asset so the organic claim is visually supported without competing with the Bold Love logo.
 - [x] (2026-04-07 18:05Z) Updated this ExecPlan so it matches the final, simplified scope.
 
 ## Surprises & Discoveries
@@ -40,6 +42,9 @@ After this change, a visitor loading `index.html` should see a short introductio
 
 - Observation: The earlier homepage structure was readable but not fully coherent, because the page palette and call-to-action styling did not actually follow the logo colors.
   Evidence: The redesign review identified brown type, a rust button, and a green eyebrow as the clearest mismatches against the black-and-gold logo.
+
+- Observation: The two short hero lines were partially duplicating each other because both mainly described the product mix.
+  Evidence: One line listed seasonal produce, breads, pastries, and prepared foods, while the other repeated nearly the same inventory in slightly different words.
 
 ## Decision Log
 
@@ -75,6 +80,14 @@ After this change, a visitor loading `index.html` should see a short introductio
   Rationale: This makes the shopping action appear earlier and resolves the previous feeling that the hero switched from a two-column top to an unrelated full-width lower section without enough structure.
   Date/Author: 2026-04-07 / Codex
 
+- Decision: Use the secondary hero copy to emphasize USDA-certified organic, local, relatively untraveled produce rather than repeating the product list.
+  Rationale: That adds a genuinely different selling point and responds directly to the user’s instruction to stress organic and local qualities.
+  Date/Author: 2026-04-07 / Codex
+
+- Decision: Use the official USDA AMS black-and-white organic seal as a small supporting badge.
+  Rationale: The official USDA page provides a black-and-white version of the seal that fits the black-and-gold page much better than the green-and-brown seal, while still making the organic claim feel official and discrete.
+  Date/Author: 2026-04-07 / Codex
+
 ## Outcomes & Retrospective
 
 The landing page is now a simple store-first homepage. It introduces Bold Love Farm & Bakery, explains the produce and prepared-food offering, integrates the brand logo into the hero, and directs people to the GrownBy shop without mentioning mailing-list signup at all.
@@ -95,6 +108,8 @@ The work is confined to `index.html` and this plan file. In `index.html`, remove
 
 Keep the visual system intentionally small. Reuse the existing background image, keep the translucent content panel, and preserve responsive behavior. Use the logo as the intentional right-side element in the top hero area so the header feels balanced, with the lower detail cards still spanning the panel width below. Base the page styling on the logo palette: near-black for primary type, gold for accents and calls to action, and warm cream for the main reading surface.
 
+Use the hero copy carefully so each line adds new information. The main lede should explain what is sold. The supporting line should explain why it is distinctive, in this case USDA-certified organic produce grown close to home and food that is less traveled.
+
 After the HTML edit, verify the page locally by serving the repository, requesting the page over HTTP, and checking for two things in the served output: the presence of the store button text and the absence of mailing-list or Sunday-menu text.
 
 ## Concrete Steps
@@ -105,7 +120,7 @@ Inspect the current page for leftover signup and Sunday-menu language:
 
     rg -n "Weekly Updates|Join the mailing list|Sunday|mailing|Get The Sunday Menu|shop" index.html
 
-Edit `index.html` to remove the Mailchimp script, remove the signup panel, remove the secondary menu button, tighten the intro copy around the online store, integrate the logo using the URL-encoded image path `BL_Logo_blackyellow_F%26B.png`, and restyle the page so the palette and CTA follow the logo’s black-and-gold brand direction.
+Edit `index.html` to remove the Mailchimp script, remove the signup panel, remove the secondary menu button, tighten the intro copy around the online store, integrate the logo using the URL-encoded image path `BL_Logo_blackyellow_F%26B.png`, and restyle the page so the palette and CTA follow the logo’s black-and-gold brand direction. Add a small official USDA Organic seal using the USDA AMS black-and-white asset if the badge can be kept visually secondary.
 
 Verify that the unwanted strings are gone from the file:
 
@@ -161,13 +176,23 @@ Observed output included:
     305:                rel="noopener noreferrer">Shop The Online Store</a>
     313:              <img class="logo-mark" src="BL_Logo_blackyellow_F%26B.png" alt="Bold Love Farm and Bakery logo" width="600"
 
+Confirm that the revised organic/local copy and USDA badge reference appear in the served HTML:
+
+    curl -s http://127.0.0.1:8000/ | rg -n "USDA-certified organic|RT_BlackandWhiteOrganicSeal.gif|The weekly shop brings together what we grow|Shop The Online Store"
+
+Observed output included:
+
+    332:                <img src="https://www.ams.usda.gov/sites/default/files/media/RT_BlackandWhiteOrganicSeal.gif"
+    343:            <p class="support-copy">Our produce is USDA-certified organic, grown close to home, and harvested for the weekly shop instead of shipped across the country. We bake and cook with the same care, so the food reaches you fresh, local, and relatively untraveled.</p>
+    350:            <p class="brand-note">The weekly shop brings together what we grow, what we bake, what we cook, and a handful of staples from local partners.</p>
+
 ## Validation and Acceptance
 
-Acceptance is now straightforward. When a visitor loads the page, they should see Bold Love Farm & Bakery introduced in plain language, the logo integrated into the hero, a page palette that feels visibly tied to the logo colors, and a clear button to shop online. There should be no visible signup section, no mailing-list wording, and no Sunday-menu invitation.
+Acceptance is now straightforward. When a visitor loads the page, they should see Bold Love Farm & Bakery introduced in plain language, the logo integrated into the hero, a page palette that feels visibly tied to the logo colors, a small USDA Organic badge that does not overpower the main brand, and a clear button to shop online. There should be no visible signup section, no mailing-list wording, and no Sunday-menu invitation.
 
-Local verification passed. `curl -I http://127.0.0.1:8000/` returned `HTTP/1.0 200 OK`, which confirms the static page still serves normally. `curl -I http://127.0.0.1:8000/BL_Logo_blackyellow_F%26B.png` also returned `HTTP/1.0 200 OK`, confirming the logo asset path is correct. The served HTML contains `Shop The Online Store`, references the logo image, and contains the new gold palette variables used by the redesigned CTA and accent styles.
+Local verification passed. `curl -I http://127.0.0.1:8000/` returned `HTTP/1.0 200 OK`, which confirms the static page still serves normally. `curl -I http://127.0.0.1:8000/BL_Logo_blackyellow_F%26B.png` also returned `HTTP/1.0 200 OK`, confirming the logo asset path is correct. The served HTML contains `Shop The Online Store`, references the logo image, references the official USDA AMS seal asset, and contains the revised organic/local copy.
 
-The final browser-side acceptance check is visual: a human reviewer should open the page and confirm the logo feels appropriately sized, is clearly circular rather than square, the top hero area reads as a deliberate copy-plus-logo layout, the lower cards still span the panel cleanly, the black-and-gold palette feels consistent with the logo, and the store link is immediately obvious.
+The final browser-side acceptance check is visual: a human reviewer should open the page and confirm the logo feels appropriately sized, is clearly circular rather than square, the top hero area reads as a deliberate copy-plus-logo layout, the USDA badge feels discrete rather than promotional, the lower cards still span the panel cleanly, the black-and-gold palette feels consistent with the logo, and the store link is immediately obvious.
 
 ## Idempotence and Recovery
 
@@ -184,6 +209,7 @@ The final page now includes:
 - A single centered content panel over the farm background image.
 - Introductory copy explaining Bold Love Farm & Bakery.
 - A black, gold, and cream palette aligned with the logo colors.
+- A discreet official USDA Organic badge using the USDA AMS black-and-white seal.
 - The black-and-yellow Bold Love logo in a dedicated circular hero frame.
 - A prominent button linking to the GrownBy store.
 - Supporting detail cards that explain what the farm offers, how it grows, what it makes, and what else the shop includes.
@@ -198,9 +224,11 @@ Revision note: Updated on 2026-04-07 after integrating the new logo asset and re
 
 ## Interfaces and Dependencies
 
-The final page depends on two repository-local images and the external GrownBy store URL.
+The final page depends on two repository-local images, one official external USDA badge asset, and the external GrownBy store URL.
 
 The repository-local assets are `/Users/george/work/boldlovebakery.com/farm_background.png` and `/Users/george/work/boldlovebakery.com/BL_Logo_blackyellow_F&B.png`.
+
+The external USDA asset is `https://www.ams.usda.gov/sites/default/files/media/RT_BlackandWhiteOrganicSeal.gif`, which corresponds to the black-and-white USDA Organic seal listed on the USDA AMS “The Organic Seal” page.
 
 The external outbound link is `https://grownby.com/farms/bold-love-farm-bakery/shop`.
 
