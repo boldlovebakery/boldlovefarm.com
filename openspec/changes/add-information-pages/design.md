@@ -24,13 +24,13 @@ The new pages contain very different content shapes: three short future narrativ
 
 ## Decisions
 
-### Use one small shared header and explicit page templates
+### Use shared navigation with page-appropriate branding and explicit page templates
 
-Add a `SiteHeader.astro` component that renders a compact brand link plus normal HTML navigation links for Home, About, Products, and Contact Us. Pass the current route as a simple string prop so the matching link can receive both visible current-page styling and `aria-current="page"`. Render the component on the homepage and all three new pages.
+Add a `SiteHeader.astro` component that renders normal HTML navigation links for Home, About, Products, and Contact Us. On information pages it also renders a compact brand link. On the homepage, where the large logo and business name already establish the brand, render only the navigation, right-aligned directly beneath the product summary. Pass the current route as a simple string prop so the matching link can receive both visible current-page styling and `aria-current="page"`.
 
 Keep the page bodies in `about.astro`, `contact.astro`, and `products.astro`. Each page has enough unique hierarchy that extracting content into arrays or a generalized renderer would make routine copy edits less direct.
 
-Alternative considered: create a single data-driven content-page component. That would reduce repeated markup but introduce indirection without enough pages or stable content to justify it.
+Alternative considered: repeat the compact brand treatment at the top of the homepage. That duplicates the prominent hero identity and makes the navigation compete with the product message. A navigation-only variation retains the shared link behavior without adding another logo treatment.
 
 ### Extend the layout with plain metadata props
 

@@ -30,3 +30,13 @@
 
 - [x] 5.1 Reduce the shared header’s visual weight while preserving clear current-page and keyboard-focus states.
 - [x] 5.2 Re-run automated tests and compare the quieter navigation at desktop and narrow-mobile sizes.
+
+## 6. Reposition Homepage Navigation After Review
+
+- [x] 6.1 Remove the branded header from the top of the homepage and place a navigation-only variation directly beneath the product summary.
+- [x] 6.2 Re-run automated tests and review the new homepage navigation position at desktop and narrow-mobile sizes.
+
+## 7. Align Homepage Navigation After Review
+
+- [x] 7.1 Right-align the homepage navigation beneath the product summary at desktop and narrow-mobile sizes.
+- [x] 7.2 Re-run automated tests and confirm the right-aligned navigation remains readable without horizontal overflow.

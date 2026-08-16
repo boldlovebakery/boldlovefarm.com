@@ -1,16 +1,21 @@
 ---
 interface Props {
   currentPage?: string;
+  showBrand?: boolean;
 }
 
-const { currentPage = "" } = Astro.props;
+const { currentPage = "", showBrand = true } = Astro.props;
 ---
 
-<header class="site-header">
-  <a class="site-brand-link" href="/" aria-label="Bold Love Farm and Bakery home">
-    <span class="site-brand-mark" aria-hidden="true">BL</span>
-    <span>Bold Love</span>
-  </a>
+<header class={showBrand ? "site-header" : "site-header site-header--nav-only"}>
+  {
+    showBrand && (
+      <a class="site-brand-link" href="/" aria-label="Bold Love Farm and Bakery home">
+        <span class="site-brand-mark" aria-hidden="true">BL</span>
+        <span>Bold Love</span>
+      </a>
+    )
+  }
   <nav class="site-nav" aria-label="Primary navigation">
     <ul class="site-nav-list">
       <li>

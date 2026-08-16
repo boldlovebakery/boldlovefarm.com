@@ -71,6 +71,11 @@ p {
   background: var(--cream-strong);
 }
 
+.hero-intro {
+  display: grid;
+  gap: 8px;
+}
+
 .site-header {
   display: flex;
   align-items: center;
@@ -78,6 +83,16 @@ p {
   gap: 20px;
   padding-bottom: 15px;
   border-bottom: 1px solid rgba(19, 13, 10, 0.1);
+}
+
+.site-header--nav-only {
+  justify-content: flex-end;
+  padding: 0 20px 0 0;
+  border-bottom: 0;
+}
+
+.site-header--nav-only .site-nav-list {
+  justify-content: flex-end;
 }
 
 .site-brand-link {
@@ -788,6 +803,26 @@ h1 {
   .site-nav-link {
     width: 100%;
     padding-inline: 10px;
+  }
+
+  .site-header--nav-only {
+    padding-right: 0;
+  }
+
+  .site-header--nav-only .site-nav {
+    width: 100%;
+  }
+
+  .site-header--nav-only .site-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px 10px;
+  }
+
+  .site-header--nav-only .site-nav-link {
+    width: auto;
+    padding-inline: 4px;
   }
 
   .order-steps > li {

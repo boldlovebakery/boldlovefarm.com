@@ -10,11 +10,13 @@ const shopUrl = "https://grownby.com/farms/bold-love-farm-bakery/shop";
   <main class="page">
     <div class="layout">
       <section class="panel hero" aria-labelledby="site-title">
-        <SiteHeader currentPage="home" />
-        <p class="offer-summary">
-          Organic fruits and vegetables, prepared foods, sourdough breads, baked goods, and many
-          other products from our local partners
-        </p>
+        <div class="hero-intro">
+          <p class="offer-summary">
+            Organic fruits and vegetables, prepared foods, sourdough breads, baked goods, and many
+            other products from our local partners
+          </p>
+          <SiteHeader currentPage="home" showBrand={false} />
+        </div>
         <div class="hero-top">
           <div class="hero-brand">
             <div class="logo-frame">
