@@ -1,0 +1,124 @@
+---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const shopUrl = "https://grownby.com/farms/bold-love-farm-bakery/shop";
+---
+
+<BaseLayout
+  title="Products | Bold Love Farm & Bakery"
+  description="Explore Bold Love products and learn how to order for pickup or Friday home delivery."
+>
+  <main class="page content-page">
+    <div class="content-layout">
+      <article class="panel content-panel">
+        <SiteHeader currentPage="products" />
+
+        <header class="page-intro products-intro">
+          <p class="page-kicker">What’s in the shop</p>
+          <h1 class="page-title">Products</h1>
+          <p class="product-summary">
+            Local and organic products, prepared foods, sourdough breads, pastries, local meats,
+            cheeses, jam, eggs, microgreens, honey, coffee, and tea.
+          </p>
+          <div class="products-cta-row">
+            <p>To buy our products, shop our online store.</p>
+            <a
+              class="primary-cta"
+              href={shopUrl}
+              target="_blank"
+              rel="noopener noreferrer">Shop The Online Store</a
+            >
+          </div>
+        </header>
+
+        <section class="order-guide" aria-labelledby="order-guide-title">
+          <div class="section-heading-row">
+            <p class="page-kicker">From cart to kitchen</p>
+            <h2 id="order-guide-title">How to order</h2>
+          </div>
+
+          <ol class="order-steps">
+            <li>
+              <div class="step-content">
+                <h3>Choose your products</h3>
+                <p>Pick the products you’d like from our online store.</p>
+              </div>
+            </li>
+            <li>
+              <div class="step-content">
+                <h3>Choose pickup or delivery</h3>
+                <p>Tell us how you’d like to get your order.</p>
+              </div>
+            </li>
+            <li>
+              <div class="step-content">
+                <h3>For pickup, choose your location</h3>
+                <ul class="detail-list">
+                  <li>Bold Love Farm (Mount Airy)</li>
+                  <li>Blue Crab Fitness (Lisbon)</li>
+                  <li>Trek Bicycle Westminster parking lot</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div class="step-content">
+                <h3>For delivery, tell us where</h3>
+                <p>
+                  Enter your address and any special delivery instructions—for example, “We’ll
+                  leave a cooler on the back deck.”
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="step-content">
+                <h3>Choose your schedule</h3>
+                <p>If schedule options are available, first choose the day, then the date.</p>
+                <ol class="detail-list schedule-list">
+                  <li>Choose Wednesday or Friday.</li>
+                  <li>Choose the available date.</li>
+                </ol>
+              </div>
+            </li>
+            <li>
+              <div class="step-content">
+                <h3>Load up your cart</h3>
+                <p>Add any other items to your cart. It’s a big cart, so you can really load it up.</p>
+              </div>
+            </li>
+            <li>
+              <div class="step-content">
+                <h3>Check out</h3>
+                <ul class="payment-options">
+                  <li>
+                    <strong>Online payment:</strong> Simply enter your credit card details and
+                    you’re all set!
+                  </li>
+                  <li>
+                    <strong>Offline payment:</strong>
+                    <ul class="detail-list">
+                      <li><strong>Cash or check:</strong> We’ll take care of it at pickup. Easy peasy.</li>
+                      <li><strong>Venmo:</strong> @Kim-Anderson-66</li>
+                      <li><strong>Zelle:</strong> 443-386-4324</li>
+                      <li><strong>CCFS food vouchers:</strong> Bring them to pickup!</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+
+          <aside class="payment-note" aria-labelledby="payment-note-title">
+            <p class="note-label" id="payment-note-title">A note on offline payments</p>
+            <p>
+              A quirk of our online store requires a billing address for offline payments.
+            </p>
+          </aside>
+        </section>
+
+        <SiteFooter />
+      </article>
+    </div>
+  </main>
+</BaseLayout>

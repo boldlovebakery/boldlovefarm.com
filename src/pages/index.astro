@@ -1,5 +1,6 @@
 ---
 import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const shopUrl = "https://grownby.com/farms/bold-love-farm-bakery/shop";
@@ -9,6 +10,7 @@ const shopUrl = "https://grownby.com/farms/bold-love-farm-bakery/shop";
   <main class="page">
     <div class="layout">
       <section class="panel hero" aria-labelledby="site-title">
+        <SiteHeader currentPage="home" />
         <p class="offer-summary">
           Organic fruits and vegetables, prepared foods, sourdough breads, baked goods, and many
           other products from our local partners

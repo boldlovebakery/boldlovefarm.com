@@ -1,0 +1,55 @@
+---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="About | Bold Love Farm & Bakery"
+  description="Learn about Bold Love Farm, Bold Love Bakery, and the local partners who help feed our community."
+>
+  <main class="page content-page">
+    <div class="content-layout">
+      <article class="panel content-panel">
+        <SiteHeader currentPage="about" />
+
+        <header class="page-intro">
+          <p class="page-kicker">Our story</p>
+          <h1 class="page-title">About Bold Love</h1>
+          <p class="page-lede">
+            We’re gathering the stories behind our farm, our bakery, and the people we’re proud to
+            work alongside. There’s more to come.
+          </p>
+        </header>
+
+        <div class="about-sections" aria-label="About Bold Love stories">
+          <section class="about-section" aria-labelledby="about-farm">
+            <span class="section-number" aria-hidden="true">01</span>
+            <div>
+              <h2 id="about-farm">About the Farm</h2>
+              <p class="placeholder-copy">Our farm story is coming soon.</p>
+            </div>
+          </section>
+
+          <section class="about-section" aria-labelledby="about-bakery">
+            <span class="section-number" aria-hidden="true">02</span>
+            <div>
+              <h2 id="about-bakery">About the Bakery</h2>
+              <p class="placeholder-copy">Our bakery story is coming soon.</p>
+            </div>
+          </section>
+
+          <section class="about-section" aria-labelledby="about-partners">
+            <span class="section-number" aria-hidden="true">03</span>
+            <div>
+              <h2 id="about-partners">About Our Partners</h2>
+              <p class="placeholder-copy">Our partners’ stories are coming soon.</p>
+            </div>
+          </section>
+        </div>
+
+        <SiteFooter />
+      </article>
+    </div>
+  </main>
+</BaseLayout>

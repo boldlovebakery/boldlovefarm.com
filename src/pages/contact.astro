@@ -1,0 +1,99 @@
+---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact Us | Bold Love Farm & Bakery"
+  description="Contact Bold Love Farm and Bakery and find answers about ordering, pickup, delivery, food-bank support, and payments."
+>
+  <main class="page content-page">
+    <div class="content-layout">
+      <article class="panel content-panel">
+        <SiteHeader currentPage="contact" />
+
+        <header class="page-intro contact-intro">
+          <div>
+            <p class="page-kicker">We’d love to hear from you</p>
+            <h1 class="page-title">Contact Us</h1>
+          </div>
+          <a class="email-callout" href="mailto:boldlove@boldlovefarm.com">
+            <span class="email-label">Email Bold Love</span>
+            <span class="email-address">boldlove@boldlovefarm.com</span>
+          </a>
+        </header>
+
+        <section class="faq-section" aria-labelledby="faq-title">
+          <div class="section-heading-row">
+            <p class="page-kicker">Good to know</p>
+            <h2 id="faq-title">Frequently Asked Questions</h2>
+          </div>
+
+          <dl class="faq-list">
+            <div class="faq-item temporary-answer">
+              <dt>What are your hours?</dt>
+              <dd>
+                <span class="answer-status">Hours details coming soon</span>
+                <p>blah, blah, blah</p>
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt>How do I order?</dt>
+              <dd>
+                <p>
+                  Start on our <a class="text-link" href="/products/">Products page</a> for a
+                  step-by-step guide and a link to our online store.
+                </p>
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt>How do I get my food?</dt>
+              <dd>
+                <ul class="answer-list">
+                  <li><strong>Farm pickup:</strong> Bold Love Farm in Mount Airy.</li>
+                  <li>
+                    <strong>Gym pickup:</strong> Blue Crab Fitness in Lisbon on Wednesdays and
+                    Fridays.
+                  </li>
+                  <li>
+                    <strong>Westminster pickup:</strong> Trek Bicycle Westminster parking lot on
+                    Fridays.
+                  </li>
+                  <li><strong>Home delivery:</strong> Fridays.</li>
+                </ul>
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt>Do you support the local food bank?</dt>
+              <dd>
+                <p>
+                  Yes! We support the local food bank in two ways. Our generous customers buy our
+                  fresh produce to donate to the food bank. And each week we take our unsold
+                  produce, sourdough breads, and baked goods to Mount Airy Net, our local food bank.
+                  Other than the occasional vacation, we haven’t missed a week since May 2025!
+                </p>
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt>What payments do you accept?</dt>
+              <dd>
+                <p>
+                  Most! Cash, check, credit card, Venmo, Zelle, CCFS food vouchers, PayPal, and
+                  SNAP. Ask us if your favorite is missing. Payment details are included in the
+                  checkout process.
+                </p>
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <SiteFooter />
+      </article>
+    </div>
+  </main>
+</BaseLayout>

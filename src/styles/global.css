@@ -48,6 +48,14 @@ p {
   width: min(940px, 100%);
 }
 
+.content-page {
+  align-items: flex-start;
+}
+
+.content-layout {
+  width: min(1060px, 100%);
+}
+
 .panel {
   border: 1px solid rgba(244, 190, 23, 0.18);
   border-radius: 28px;
@@ -61,6 +69,80 @@ p {
   display: grid;
   gap: 28px;
   background: var(--cream-strong);
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.site-brand-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+}
+
+.site-brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--ink);
+  background: linear-gradient(145deg, #ffd85f, var(--gold));
+  border: 1px solid rgba(19, 13, 10, 0.14);
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(244, 190, 23, 0.2);
+}
+
+.site-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.93rem;
+  font-weight: 700;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.site-nav-link:hover {
+  color: var(--ink);
+  background: var(--gold-soft);
+}
+
+.site-nav-link[aria-current="page"] {
+  color: var(--ink);
+  background: rgba(244, 190, 23, 0.24);
+  box-shadow: inset 0 0 0 1px rgba(19, 13, 10, 0.1);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 .hero-top {
@@ -176,9 +258,307 @@ h1 {
 }
 
 .primary-cta:focus-visible,
-.footer-link:focus-visible {
+.footer-link:focus-visible,
+.site-brand-link:focus-visible,
+.site-nav-link:focus-visible,
+.email-callout:focus-visible,
+.text-link:focus-visible {
   outline: 2px solid rgba(244, 190, 23, 0.72);
   outline-offset: 3px;
+}
+
+.content-panel {
+  display: grid;
+  gap: clamp(30px, 5vw, 54px);
+  padding: clamp(28px, 5vw, 56px);
+  background: var(--cream-strong);
+}
+
+.page-intro {
+  display: grid;
+  gap: 14px;
+  max-width: 760px;
+}
+
+.page-kicker {
+  color: rgba(19, 13, 10, 0.64);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.page-title {
+  max-width: none;
+  font-size: clamp(2.7rem, 7vw, 4.8rem);
+  line-height: 0.96;
+}
+
+.page-lede {
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: clamp(1.03rem, 2vw, 1.18rem);
+}
+
+.section-heading-row {
+  display: grid;
+  gap: 6px;
+}
+
+.section-heading-row h2,
+.about-section h2 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  color: var(--ink);
+}
+
+.section-heading-row h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+}
+
+.about-sections {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.about-section {
+  min-height: 230px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  border: 1px solid rgba(19, 13, 10, 0.11);
+  border-top: 4px solid var(--gold);
+  border-radius: 20px;
+  background: rgba(255, 252, 245, 0.76);
+  box-shadow: 0 14px 30px rgba(19, 13, 10, 0.07);
+}
+
+.section-number {
+  color: rgba(19, 13, 10, 0.36);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.about-section h2 {
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  line-height: 1.05;
+}
+
+.placeholder-copy {
+  margin-top: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.contact-intro {
+  max-width: none;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, auto);
+  align-items: end;
+  gap: 24px;
+}
+
+.contact-intro > div {
+  display: grid;
+  gap: 14px;
+}
+
+.email-callout {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid rgba(19, 13, 10, 0.12);
+  border-radius: 16px;
+  color: var(--ink);
+  background: linear-gradient(135deg, rgba(255, 216, 95, 0.82), rgba(244, 190, 23, 0.72));
+  text-decoration: none;
+  box-shadow: 0 12px 26px rgba(244, 190, 23, 0.2);
+}
+
+.email-label {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.email-address {
+  overflow-wrap: anywhere;
+  font-weight: 750;
+}
+
+.faq-section,
+.order-guide {
+  display: grid;
+  gap: 24px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.faq-item {
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid rgba(19, 13, 10, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 252, 245, 0.76);
+}
+
+.faq-item dt {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.faq-item dd {
+  margin: 12px 0 0;
+  color: var(--muted);
+}
+
+.faq-item strong,
+.step-content strong {
+  color: var(--ink);
+}
+
+.temporary-answer {
+  border-style: dashed;
+  background: var(--gold-soft);
+}
+
+.answer-status,
+.note-label {
+  display: block;
+  margin-bottom: 5px;
+  color: rgba(19, 13, 10, 0.66);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.answer-list,
+.detail-list,
+.payment-options {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.text-link {
+  color: var(--ink);
+  font-weight: 750;
+  text-decoration-color: rgba(244, 190, 23, 0.95);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+}
+
+.products-intro {
+  max-width: 850px;
+}
+
+.product-summary {
+  max-width: 34ch;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(1.45rem, 3.5vw, 2.35rem);
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.products-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 22px;
+  padding-top: 8px;
+}
+
+.products-cta-row p {
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.order-steps {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  counter-reset: order-step;
+  list-style: none;
+}
+
+.order-steps > li {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 18px;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid rgba(19, 13, 10, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 252, 245, 0.76);
+  counter-increment: order-step;
+}
+
+.order-steps > li::before {
+  content: counter(order-step, decimal-leading-zero);
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+}
+
+.step-content {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.step-content h3 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  line-height: 1.18;
+}
+
+.step-content p,
+.step-content li {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.payment-options > li + li {
+  margin-top: 5px;
+}
+
+.payment-options .detail-list {
+  margin-top: 8px;
+}
+
+.payment-note {
+  padding: 20px 22px;
+  border-left: 5px solid var(--gold);
+  border-radius: 4px 16px 16px 4px;
+  background: var(--gold-soft);
+}
+
+.payment-note p:last-child {
+  color: var(--muted);
 }
 
 .story {
@@ -307,6 +687,23 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .about-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .about-section {
+    min-height: 0;
+  }
+
+  .contact-intro {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .email-callout {
+    width: 100%;
+  }
+
   .logo-frame {
     width: min(240px, 62vw);
   }
@@ -362,6 +759,47 @@ h1 {
 
   .hero {
     padding: 22px;
+  }
+
+  .content-panel {
+    gap: 32px;
+    padding: 22px;
+  }
+
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .site-nav {
+    width: 100%;
+  }
+
+  .site-nav-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .site-nav-link {
+    width: 100%;
+    padding-inline: 10px;
+  }
+
+  .order-steps > li {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .order-steps > li::before {
+    width: 40px;
+    height: 40px;
+  }
+
+  .faq-item {
+    padding: 20px;
   }
 
   .primary-cta {

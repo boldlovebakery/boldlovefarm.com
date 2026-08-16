@@ -1,0 +1,44 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = "" } = Astro.props;
+---
+
+<header class="site-header">
+  <a class="site-brand-link" href="/" aria-label="Bold Love Farm and Bakery home">
+    <span class="site-brand-mark" aria-hidden="true">BL</span>
+    <span>Bold Love</span>
+  </a>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <ul class="site-nav-list">
+      <li>
+        <a class="site-nav-link" href="/" aria-current={currentPage === "home" ? "page" : undefined}
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          class="site-nav-link"
+          href="/about/"
+          aria-current={currentPage === "about" ? "page" : undefined}>About</a
+        >
+      </li>
+      <li>
+        <a
+          class="site-nav-link"
+          href="/products/"
+          aria-current={currentPage === "products" ? "page" : undefined}>Products</a
+        >
+      </li>
+      <li>
+        <a
+          class="site-nav-link"
+          href="/contact/"
+          aria-current={currentPage === "contact" ? "page" : undefined}>Contact Us</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>

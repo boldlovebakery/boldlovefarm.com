@@ -61,7 +61,11 @@ Mailchimp may apply connected-domain and audience rules that prevent the popup f
 ## Project structure
 
 - `src/pages/index.astro` — homepage content and structure
+- `src/pages/about.astro` — About page and its three planned story sections
+- `src/pages/contact.astro` — contact details and frequently asked questions
+- `src/pages/products.astro` — product overview and ordering guide
 - `src/layouts/BaseLayout.astro` — document shell and metadata
+- `src/components/SiteHeader.astro` — shared primary navigation
 - `src/components/SiteFooter.astro` — footer content
 - `src/styles/global.css` — visual design and responsive rules
 - `public/` — files copied unchanged into the generated site
@@ -69,6 +73,10 @@ Mailchimp may apply connected-domain and audience rules that prevent the popup f
 - `.github/workflows/deploy.yml` — GitHub Pages build and deployment
 
 `dist/` is generated and is not committed.
+
+## Planned content follow-ups
+
+The About page intentionally uses short placeholders for the farm, bakery, and partner stories. The Contact Us page also keeps `blah, blah, blah` as the temporary hours answer. Replace those four placeholders when the final copy and business hours are ready; their page structure and styling are complete.
 
 ## GitHub Pages deployment
 
