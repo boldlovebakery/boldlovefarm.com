@@ -25,3 +25,8 @@
 - [x] 4.1 Render the homepage and all three information pages at representative desktop and narrow-mobile sizes and check visual hierarchy, readable line length, navigation wrapping, CTA prominence, and footer consistency.
 - [x] 4.2 Check keyboard traversal, visible focus, current-page indication, heading order, link purpose, touch-target usability, and absence of horizontal overflow across all four routes.
 - [x] 4.3 Confirm the final implementation added no dependency or application-owned client-side JavaScript, and record the About narratives and business hours as intentional copy follow-ups rather than incomplete implementation work.
+
+## 5. Refine Navigation After Review
+
+- [x] 5.1 Reduce the shared header’s visual weight while preserving clear current-page and keyboard-focus states.
+- [x] 5.2 Re-run automated tests and compare the quieter navigation at desktop and narrow-mobile sizes.
