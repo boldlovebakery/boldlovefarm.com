@@ -376,11 +376,6 @@ h1 {
   gap: 24px;
 }
 
-.contact-intro > div {
-  display: grid;
-  gap: 14px;
-}
-
 .email-callout {
   display: inline-flex;
   justify-self: end;

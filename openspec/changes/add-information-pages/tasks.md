@@ -94,3 +94,7 @@
 ## 19. Soften the Contact Email Treatment
 
 - [x] 19.1 Remove the email address underline, reduce its font weight, and verify that it remains readable, linked, and visibly focused from the keyboard.
+
+## 20. Remove the Contact Introductory Kicker
+
+- [x] 20.1 Remove “We’d love to hear from you,” simplify the now-unneeded heading wrapper and style, and verify the Contact header spacing.
