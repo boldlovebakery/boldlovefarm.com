@@ -11,8 +11,14 @@ const { currentPage = "", showBrand = true } = Astro.props;
   {
     showBrand && (
       <a class="site-brand-link" href="/" aria-label="Bold Love Farm and Bakery home">
-        <span class="site-brand-mark" aria-hidden="true">BL</span>
-        <span>Bold Love</span>
+        <img
+          class="site-brand-logo"
+          src="/bold-love-logo.png"
+          alt=""
+          width="600"
+          height="600"
+          aria-hidden="true"
+        />
       </a>
     )
   }

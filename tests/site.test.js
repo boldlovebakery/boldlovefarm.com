@@ -130,6 +130,12 @@ test("all information pages have metadata, landmarks, and shared navigation", ()
     assert.match(page.document, /<footer\b/);
     assert.match(
       page.document,
+      /<img class="site-brand-logo" src="\/bold-love-logo\.png" alt=""/,
+    );
+    assert.ok(!page.document.includes("site-brand-mark"));
+    assert.ok(!page.document.includes(">Bold Love</span>"));
+    assert.match(
+      page.document,
       new RegExp(
         `<a[^>]+href="${page.currentDestination}"[^>]+aria-current="page"[^>]*>${page.name}</a>`,
       ),
@@ -188,6 +194,9 @@ test("the Contact Us page includes contact details and every FAQ answer", () => 
 });
 
 test("the Products page explains the complete ordering and payment process", () => {
+  assert.ok(!productsText.includes("What’s in the shop"));
+  assert.ok(!productsText.includes("From cart to kitchen"));
+
   const requiredContent = [
     "Local and organic products, prepared foods, sourdough breads, pastries, local meats, cheeses, jam, eggs, microgreens, honey, coffee, and tea.",
     "Bold Love Farm (Mount Airy)",

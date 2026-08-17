@@ -40,3 +40,41 @@
 
 - [x] 7.1 Right-align the homepage navigation beneath the product summary at desktop and narrow-mobile sizes.
 - [x] 7.2 Re-run automated tests and confirm the right-aligned navigation remains readable without horizontal overflow.
+
+## 8. Rebalance the Homepage Identity Row After Review
+
+- [x] 8.1 Give the homepage name the full right two-thirds of the desktop logo-and-name row while preserving the stacked narrow layout.
+- [x] 8.2 Re-run automated tests and visually review the revised identity balance at desktop and narrow-mobile sizes.
+
+## 9. Use the Real Logo in Information-Page Headers
+
+- [x] 9.1 Replace the invented compact brand badge with a small rendering of the existing Bold Love logo while preserving the accessible home link.
+- [x] 9.2 Extend generated-output coverage and visually review the real-logo header at desktop and narrow-mobile sizes.
+
+## 10. Simplify the Information-Page Brand Link
+
+- [x] 10.1 Remove the redundant “Bold Love” copy beside the compact header logo while preserving its accessible home-link label and touch target.
+- [x] 10.2 Update generated-output coverage and verify the logo-only header layout.
+
+## 11. Increase the Information-Page Header Logo Size
+
+- [x] 11.1 Increase the logo-only header link and image to 56 pixels so the real logo is easier to recognize.
+- [x] 11.2 Re-run automated tests and visually verify the larger logo at desktop and narrow-mobile sizes.
+
+## 12. Rebalance the Information-Page Header Logo
+
+- [x] 12.1 Increase the logo-only header link and image to 80 pixels so it visually balances the navigation.
+- [x] 12.2 Re-run automated tests and visually compare the rebalanced header at desktop and narrow-mobile sizes.
+
+## 13. Simplify the Products Introduction
+
+- [x] 13.1 Remove the “What’s in the shop” eyebrow from the Products page and guard its absence in generated output.
+
+## 14. Simplify the Products Order Guide Heading
+
+- [x] 14.1 Remove the “From cart to kitchen” eyebrow from the Products page and guard its absence in generated output.
+
+## 15. Expand the Products Summary
+
+- [x] 15.1 Remove the Products introduction and product-summary width limits so the product-range copy uses the full available content width.
+- [x] 15.2 Re-run automated tests and visually verify the expanded summary at desktop and narrow-mobile sizes.

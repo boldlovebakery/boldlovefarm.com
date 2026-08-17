@@ -26,11 +26,13 @@ The new pages contain very different content shapes: three short future narrativ
 
 ### Use shared navigation with page-appropriate branding and explicit page templates
 
-Add a `SiteHeader.astro` component that renders normal HTML navigation links for Home, About, Products, and Contact Us. On information pages it also renders a compact brand link. On the homepage, where the large logo and business name already establish the brand, render only the navigation, right-aligned directly beneath the product summary. Pass the current route as a simple string prop so the matching link can receive both visible current-page styling and `aria-current="page"`.
+Add a `SiteHeader.astro` component that renders normal HTML navigation links for Home, About, Products, and Contact Us. On information pages it also renders a logo-only brand link using a visually substantial 80-pixel version of the existing Bold Love logo rather than a separate invented badge or redundant adjacent brand copy. On the homepage, where the large logo and business name already establish the brand, render only the navigation, right-aligned directly beneath the product summary. Pass the current route as a simple string prop so the matching link can receive both visible current-page styling and `aria-current="page"`.
 
 Keep the page bodies in `about.astro`, `contact.astro`, and `products.astro`. Each page has enough unique hierarchy that extracting content into arrays or a generalized renderer would make routine copy edits less direct.
 
 Alternative considered: repeat the compact brand treatment at the top of the homepage. That duplicates the prominent hero identity and makes the navigation compete with the product message. A navigation-only variation retains the shared link behavior without adding another logo treatment.
+
+On desktop, balance the homepage identity row as a one-third/two-thirds grid: the existing logo occupies the left third and the full business name uses the right two-thirds without the earlier narrow heading-width constraint. Retain the established stacked treatment below the desktop breakpoint.
 
 ### Extend the layout with plain metadata props
 
@@ -44,7 +46,7 @@ Reuse the existing background and panel tokens. Information pages use a wider, t
 
 - About uses an editorial introduction followed by three ordered visual sections. Each section has its real heading and a restrained “story coming soon” message, making incompleteness look intentional rather than like missing content.
 - Contact Us places the email in a prominent callout and renders the FAQ as visible question-and-answer groups. Answers stay expanded; semantic headings or a description list provide structure without an accordion.
-- Products uses a strong product-range hero, an early GrownBy CTA, and a numbered order guide. Native ordered and nested lists preserve meaning, while CSS counters/card-like groupings can improve scanning. The offline billing-address quirk appears in a visually distinct note close to checkout guidance.
+- Products uses a strong full-width product-range hero that begins directly with the “Products” heading, an early GrownBy CTA, and a numbered order guide introduced directly by its “How to order” heading. The product-range summary uses the entire available content width rather than the narrower general introduction measure. Native ordered and nested lists preserve meaning, while CSS counters/card-like groupings can improve scanning. The offline billing-address quirk appears in a visually distinct note close to checkout guidance.
 
 Alternative considered: give every page an identical grid of cards. The FAQ and sequential order guide need different reading patterns, and forcing them into one layout would weaken hierarchy.
 
