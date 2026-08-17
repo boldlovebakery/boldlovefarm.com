@@ -82,3 +82,15 @@
 ## 16. Refine the Contact Payment Wording
 
 - [x] 16.1 Change the payment FAQ sentence to “Payment details are provided in the checkout process.” and update its exact generated-content assertion.
+
+## 17. Match the Footer Shop Button to the Logo
+
+- [x] 17.1 Change the shared footer “Shop Online” button to the established logo-yellow brand color and visually verify it across the site.
+
+## 18. Simplify the Contact Header
+
+- [x] 18.1 Remove the “Good to know” and “Email Bold Love” labels, retain the linked email address in the page header, remove its callout background, and verify the simplified layout.
+
+## 19. Soften the Contact Email Treatment
+
+- [x] 19.1 Remove the email address underline, reduce its font weight, and verify that it remains readable, linked, and visibly focused from the keyboard.

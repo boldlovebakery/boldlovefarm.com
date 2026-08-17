@@ -167,6 +167,8 @@ test("the About page presents the planned story sections in order", () => {
 
 test("the Contact Us page includes contact details and every FAQ answer", () => {
   assert.match(contactPage, /href="mailto:boldlove@boldlovefarm\.com"/);
+  assert.ok(!contactText.includes("Good to know"));
+  assert.ok(!contactText.includes("Email Bold Love"));
 
   const requiredContent = [
     "boldlove@boldlovefarm.com",
