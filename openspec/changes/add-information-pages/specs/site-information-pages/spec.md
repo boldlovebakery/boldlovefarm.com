@@ -46,11 +46,12 @@ The Contact Us page SHALL display `boldlove@boldlovefarm.com` prominently and SH
 ### Requirement: Present ordering and fulfillment FAQs
 The Contact Us page SHALL present an FAQ section with distinct, accessible question-and-answer groupings for hours, ordering, fulfillment, food-bank support, and accepted payments.
 
-The hours answer SHALL display the current placeholder “blah, blah, blah.” The ordering answer SHALL link to `/products/`. The fulfillment answer SHALL identify farm pickup, gym pickup at Blue Crab Fitness in Lisbon on Wednesdays and Fridays, pickup at the Trek Bicycle Westminster parking lot on Fridays, and home delivery on Fridays.
+The hours answer SHALL explain that Bold Love has no retail space and fulfills orders on Wednesdays and Fridays. It SHALL list Wednesday pickup at Bold Love Farm from 4:00–6:00 pm and Blue Crab Fitness from 4:30–6:30 pm. It SHALL list Friday pickup at Bold Love Farm from 4:00–6:00 pm, Blue Crab Fitness from 4:30–6:30 pm, and the Trek Bicycle Westminster parking lot from 2:00–2:30 pm, plus home delivery generally between 1:00 and 3:00 pm. It SHALL explain that bread is currently baked for Fridays and that “Pizza at Pickup” is offered on occasional Wednesdays, and SHALL link to `/products/` for more about ordering. The ordering answer SHALL also link to `/products/`. The fulfillment answer SHALL identify farm pickup, gym pickup at Blue Crab Fitness in Lisbon on Wednesdays and Fridays, pickup at the Trek Bicycle Westminster parking lot on Fridays, and home delivery on Fridays.
 
 #### Scenario: Review hours and ordering answers
 - **WHEN** a visitor reviews the FAQ section
-- **THEN** “What are your hours?” is answered with the current placeholder text
+- **THEN** “What are your hours?” explains the Wednesday and Friday fulfillment schedule with the required locations, pickup times, delivery window, and current bread and pizza availability
+- **AND** the hours answer provides a working link to the Products page
 - **AND** “How do I order?” provides a working link to the Products page
 
 #### Scenario: Review fulfillment choices
@@ -130,4 +131,3 @@ Each information page SHALL extend the established Bold Love black-and-gold visu
 - **THEN** it declares English as the document language and includes responsive viewport metadata
 - **AND** its document title identifies both the page and Bold Love Farm & Bakery
 - **AND** it contains one primary heading with logically nested section headings
-

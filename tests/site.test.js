@@ -170,11 +170,23 @@ test("the Contact Us page includes contact details and every FAQ answer", () => 
   assert.ok(!contactText.includes("We’d love to hear from you"));
   assert.ok(!contactText.includes("Good to know"));
   assert.ok(!contactText.includes("Email Bold Love"));
+  assert.ok(!contactText.includes("blah, blah, blah"));
+  assert.ok(!contactText.includes("Hours details coming soon"));
 
   const requiredContent = [
     "boldlove@boldlovefarm.com",
     "What are your hours?",
-    "blah, blah, blah",
+    "We currently don’t have retail space, so here’s how we work. We fulfill orders Wednesdays and Fridays.",
+    "On Wednesdays we have pickup at the farm (Mount Airy) and Blue Crab Fitness (Lisbon).",
+    "Wednesday:",
+    "Bold Love Farm 4:00 – 6:00 pm",
+    "Blue Crab Fitness 4:30 – 6:30 pm",
+    "On Fridays we have pickup at the farm (Mount Airy) and Blue Crab Fitness (Lisbon), along with home delivery and pickup at the Trek Bicycle Westminster parking lot.",
+    "Friday:",
+    "Trek Bicycle Westminster parking lot 2:00 – 2:30 pm",
+    "Deliver generally between 1:00 and 3:00 pm",
+    "We’re currently only baking bread for Fridays and “Pizza at Pickup” on the occasional Wednesday.",
+    "You can learn more about our ordering process on our Products page",
     "How do I order?",
     "How do I get my food?",
     "Bold Love Farm in Mount Airy",
@@ -193,7 +205,11 @@ test("the Contact Us page includes contact details and every FAQ answer", () => 
     assert.ok(contactText.includes(content), `Expected Contact Us page to include: ${content}`);
   }
 
-  assert.match(contactPage, /<a class="text-link" href="\/products\/">Products page<\/a>/);
+  assert.equal(
+    (contactPage.match(/<a class="text-link" href="\/products\/">Products page<\/a>/g) || [])
+      .length,
+    2,
+  );
 });
 
 test("the Products page explains the complete ordering and payment process", () => {

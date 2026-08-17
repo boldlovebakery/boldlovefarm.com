@@ -429,12 +429,6 @@ h1 {
   color: var(--ink);
 }
 
-.temporary-answer {
-  border-style: dashed;
-  background: var(--gold-soft);
-}
-
-.answer-status,
 .note-label {
   display: block;
   margin-bottom: 5px;
@@ -443,6 +437,39 @@ h1 {
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.hours-answer {
+  display: grid;
+  gap: 16px;
+}
+
+.hours-schedule {
+  display: grid;
+  gap: 8px;
+}
+
+.hours-day {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hours-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hours-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+}
+
+.hours-list .hours-delivery {
+  grid-template-columns: 1fr;
 }
 
 .answer-list,
@@ -787,6 +814,11 @@ h1 {
 
   .site-header--nav-only {
     padding-right: 0;
+  }
+
+  .hours-list li {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .site-header--nav-only .site-nav {

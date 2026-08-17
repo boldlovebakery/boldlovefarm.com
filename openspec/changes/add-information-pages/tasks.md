@@ -98,3 +98,9 @@
 ## 20. Remove the Contact Introductory Kicker
 
 - [x] 20.1 Remove “We’d love to hear from you,” simplify the now-unneeded heading wrapper and style, and verify the Contact header spacing.
+
+## 21. Publish the Contact Hours
+
+- [x] 21.1 Replace the temporary-hours requirement, risk, and follow-up with the owner-provided Wednesday and Friday schedule.
+- [x] 21.2 Replace the temporary FAQ answer with the detailed schedule, bread and pizza availability, and a Products-page link; remove obsolete temporary styles and update generated-output assertions.
+- [x] 21.3 Run the full tests and visually verify that the longer answer remains readable without overflow.

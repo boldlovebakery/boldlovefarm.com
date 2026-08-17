@@ -17,7 +17,7 @@ The new pages contain very different content shapes: three short future narrativ
 **Non-Goals:**
 
 - Building a CMS, Markdown content collection, data-driven page builder, or reusable FAQ/order-step schema.
-- Inventing final About narratives or final business hours.
+- Inventing final About narratives or business details not supplied by the owner.
 - Adding FAQ accordions, mobile-menu behavior, animation, a frontend framework, or a new dependency.
 - Changing the GrownBy ordering system, Mailchimp configuration, deployment workflow, brand assets, or custom-domain behavior.
 - Publishing the work to production as part of this change.
@@ -58,7 +58,7 @@ Alternative considered: collapse navigation behind a menu button on mobile. That
 
 ### Normalize obvious copy errors without changing meaning
 
-Render “About Our Partners,” pluralize “product” in the Products hero, and correct instructional typos. Interpret “Gym” as Blue Crab Fitness (Lisbon), because the Products pickup list supplies that proper name and location. Preserve supplied business facts, schedule details, account identifiers, phone number, food-bank wording, and the intentionally temporary hours answer.
+Render “About Our Partners,” pluralize “product” in the Products hero, and correct instructional typos. Interpret “Gym” as Blue Crab Fitness (Lisbon), because the Products pickup list supplies that proper name and location. Preserve supplied business facts, schedule details, account identifiers, phone number, food-bank wording, and the owner-provided operating hours.
 
 Alternative considered: reproduce every typo and shorthand exactly. That would make the initial pages look unfinished in places unrelated to the deliberately deferred copy.
 
@@ -70,7 +70,7 @@ Alternative considered: rely only on source inspection. Generated HTML catches A
 
 ## Risks / Trade-offs
 
-- [The temporary “blah, blah, blah” hours answer could be mistaken for final copy] → Style it as an explicit temporary-answer treatment and keep replacement as a clearly named task/documented follow-up.
+- [The detailed weekly schedule could become outdated as operations change] → Keep it as direct page copy with exact generated-output assertions so future updates are straightforward and incomplete edits are caught.
 - [Long Products content becomes visually exhausting] → Use a readable maximum line length, native ordered hierarchy, spacing between steps, and a distinct checkout note without hiding content.
 - [The About page feels empty before final copy exists] → Use finished headings, intentional spacing, and short honest placeholder messages rather than large empty containers or fabricated prose.
 - [Shared navigation disrupts the carefully balanced homepage hero] → Keep the header compact, place it at the top of the existing panel, and verify against the current desktop and mobile homepage before adjusting unrelated hero rules.
@@ -91,4 +91,3 @@ Rollback: remove the three routes and shared header, revert the layout metadata 
 ## Open Questions
 
 - Final narrative copy for the three About sections can replace the placeholders later without changing route structure or layout.
-- Final hours can replace the explicit temporary FAQ answer later without changing FAQ semantics or navigation.
