@@ -78,3 +78,7 @@
 
 - [x] 15.1 Remove the Products introduction and product-summary width limits so the product-range copy uses the full available content width.
 - [x] 15.2 Re-run automated tests and visually verify the expanded summary at desktop and narrow-mobile sizes.
+
+## 16. Refine the Contact Payment Wording
+
+- [x] 16.1 Change the payment FAQ sentence to “Payment details are provided in the checkout process.” and update its exact generated-content assertion.

@@ -183,7 +183,7 @@ test("the Contact Us page includes contact details and every FAQ answer", () => 
     "we haven’t missed a week since May 2025",
     "What payments do you accept?",
     "Cash, check, credit card, Venmo, Zelle, CCFS food vouchers, PayPal, and SNAP",
-    "Payment details are included in the checkout process",
+    "Payment details are provided in the checkout process",
   ];
 
   for (const content of requiredContent) {
