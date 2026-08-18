@@ -210,6 +210,7 @@ test("the Contact Us page includes contact details and every FAQ answer", () => 
       .length,
     2,
   );
+  assert.equal((contactPage.match(/<h3 class="hours-day">(?:Wednesday|Friday):<\/h3>/g) || []).length, 2);
 });
 
 test("the Products page explains the complete ordering and payment process", () => {

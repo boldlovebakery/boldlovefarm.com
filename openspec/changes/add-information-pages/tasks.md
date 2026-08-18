@@ -104,3 +104,11 @@
 - [x] 21.1 Replace the temporary-hours requirement, risk, and follow-up with the owner-provided Wednesday and Friday schedule.
 - [x] 21.2 Replace the temporary FAQ answer with the detailed schedule, bread and pizza availability, and a Products-page link; remove obsolete temporary styles and update generated-output assertions.
 - [x] 21.3 Run the full tests and visually verify that the longer answer remains readable without overflow.
+
+## 22. Clarify the Hours Schedule Hierarchy
+
+- [x] 22.1 Render Wednesday and Friday as semantic subheadings, indent their schedule rows, and verify the hierarchy at desktop and narrow widths.
+
+## 23. Tighten the Hours Time Column
+
+- [x] 23.1 Bring the schedule times closer to their location names while retaining consistent alignment and the stacked narrow-screen layout.
