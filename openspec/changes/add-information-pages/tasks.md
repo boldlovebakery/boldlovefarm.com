@@ -112,3 +112,11 @@
 ## 23. Tighten the Hours Time Column
 
 - [x] 23.1 Bring the schedule times closer to their location names while retaining consistent alignment and the stacked narrow-screen layout.
+
+## 24. Align the Delivery Schedule Row
+
+- [x] 24.1 Change “Deliver” to the bold row label “Delivery” and align its delivery-window copy with the sibling time column.
+
+## 25. Clarify Where Orders Are Placed
+
+- [x] 25.1 Replace the informal retail-space introduction with a statement that all orders are placed through the online store, and update its specification and generated-content assertion.

@@ -473,10 +473,6 @@ h1 {
   gap: 18px;
 }
 
-.hours-list .hours-delivery {
-  grid-template-columns: 1fr;
-}
-
 .answer-list,
 .detail-list,
 .payment-options {

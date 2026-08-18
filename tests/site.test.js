@@ -176,7 +176,7 @@ test("the Contact Us page includes contact details and every FAQ answer", () => 
   const requiredContent = [
     "boldlove@boldlovefarm.com",
     "What are your hours?",
-    "We currently don’t have retail space, so here’s how we work. We fulfill orders Wednesdays and Fridays.",
+    "We currently don’t have retail space. All orders are placed through our online store. We fulfill orders Wednesdays and Fridays.",
     "On Wednesdays we have pickup at the farm (Mount Airy) and Blue Crab Fitness (Lisbon).",
     "Wednesday:",
     "Bold Love Farm 4:00 – 6:00 pm",
@@ -184,7 +184,7 @@ test("the Contact Us page includes contact details and every FAQ answer", () => 
     "On Fridays we have pickup at the farm (Mount Airy) and Blue Crab Fitness (Lisbon), along with home delivery and pickup at the Trek Bicycle Westminster parking lot.",
     "Friday:",
     "Trek Bicycle Westminster parking lot 2:00 – 2:30 pm",
-    "Deliver generally between 1:00 and 3:00 pm",
+    "Delivery generally between 1:00 and 3:00 pm",
     "We’re currently only baking bread for Fridays and “Pizza at Pickup” on the occasional Wednesday.",
     "You can learn more about our ordering process on our Products page",
     "How do I order?",
@@ -211,6 +211,10 @@ test("the Contact Us page includes contact details and every FAQ answer", () => 
     2,
   );
   assert.equal((contactPage.match(/<h3 class="hours-day">(?:Wednesday|Friday):<\/h3>/g) || []).length, 2);
+  assert.match(
+    contactPage,
+    /<li><strong>Delivery<\/strong> <span>generally between 1:00 and 3:00 pm<\/span><\/li>/,
+  );
 });
 
 test("the Products page explains the complete ordering and payment process", () => {
