@@ -120,3 +120,7 @@
 ## 25. Clarify Where Orders Are Placed
 
 - [x] 25.1 Replace the informal retail-space introduction with a statement that all orders are placed through the online store, and update its specification and generated-content assertion.
+
+## 26. Update the Project README
+
+- [x] 26.1 Update the test-coverage description and planned-content follow-ups to match the completed information pages, then verify the documented commands and links.

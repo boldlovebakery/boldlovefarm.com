@@ -41,7 +41,7 @@ Build the site and run the focused checks against the generated files:
 npm test
 ```
 
-The checks cover the homepage metadata and content, shop links, local assets, and the Mailchimp popup loader.
+The checks cover metadata and content across all four pages, internal navigation, shop-link behavior, the Contact FAQ, the Products ordering guide, local assets, and the Mailchimp popup loader.
 
 To inspect the production build locally:
 
@@ -76,7 +76,7 @@ Mailchimp may apply connected-domain and audience rules that prevent the popup f
 
 ## Planned content follow-ups
 
-The About page intentionally uses short placeholders for the farm, bakery, and partner stories. The Contact Us page also keeps `blah, blah, blah` as the temporary hours answer. Replace those four placeholders when the final copy and business hours are ready; their page structure and styling are complete.
+The About page intentionally uses short placeholders for the farm, bakery, and partner stories. Replace those three placeholders when the final narratives are ready; the page structure and styling are complete.
 
 ## GitHub Pages deployment
 
