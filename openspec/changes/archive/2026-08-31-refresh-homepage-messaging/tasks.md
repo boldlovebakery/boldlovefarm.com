@@ -14,4 +14,4 @@
 
 - [x] 3.1 Update the generated-output tests to require the new summary and three-part story and reject the superseded lede and partner note.
 - [x] 3.2 Run the production build and complete automated test suite, correcting any generated-content, integration, or asset regression.
-- [ ] 3.3 Compare desktop and narrow-mobile renders with the baseline and verify skimmability, absence of horizontal overflow, CTA prominence, logo balance, and footer usability.
+- [x] 3.3 Compare desktop and narrow-mobile renders with the baseline and verify skimmability, absence of horizontal overflow, CTA prominence, logo balance, and footer usability.
