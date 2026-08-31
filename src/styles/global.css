@@ -139,7 +139,8 @@ p {
 .site-nav-link:hover {
   color: var(--ink);
   text-decoration: underline;
-  text-decoration-color: rgba(244, 190, 23, 0.76);
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
   text-underline-offset: 5px;
 }
 
@@ -148,7 +149,7 @@ p {
   background: transparent;
   box-shadow: none;
   text-decoration: underline;
-  text-decoration-color: rgba(244, 190, 23, 0.9);
+  text-decoration-color: currentColor;
   text-decoration-thickness: 1px;
   text-underline-offset: 5px;
 }
@@ -483,11 +484,16 @@ h1 {
 }
 
 .text-link {
-  color: var(--ink);
-  font-weight: 750;
-  text-decoration-color: rgba(244, 190, 23, 0.95);
-  text-decoration-thickness: 3px;
+  color: inherit;
+  font-weight: 500;
+  text-decoration-color: rgba(19, 13, 10, 0.42);
+  text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+  transition: text-decoration-color 160ms ease;
+}
+
+.text-link:hover {
+  text-decoration-color: currentColor;
 }
 
 .products-intro {
