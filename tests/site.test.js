@@ -182,7 +182,18 @@ test("the About page presents the planned story sections in order", () => {
     ),
   );
   assert.ok(!aboutText.includes("Our bakery story is coming soon."));
-  assert.ok(aboutText.includes("Our partners’ stories are coming soon."));
+  assert.ok(
+    aboutText.includes(
+      "What if we could get all of our food from local companies? From people who live in our community, who care about the land, the animals, and especially us, their customers.",
+    ),
+  );
+  assert.ok(
+    aboutText.includes(
+      "We don't have everything yet but we collaborate with 9 local companies to offer you produce, mushrooms, meat, cheese, eggs, jam, honey, microgreens, coffee, and tea. That's a lot!",
+    ),
+  );
+  assert.match(aboutPage, /What if we could get <strong>all<\/strong> of our food/);
+  assert.ok(!aboutText.includes("Our partners’ stories are coming soon."));
   assert.match(
     aboutPage,
     new RegExp(
@@ -193,6 +204,12 @@ test("the About page presents the planned story sections in order", () => {
     aboutPage,
     new RegExp(
       `<a[^>]+href="${shopUrl}"[^>]+target="_blank"[^>]+rel="noopener noreferrer"[^>]*>Let us delight you!</a>`,
+    ),
+  );
+  assert.match(
+    aboutPage,
+    new RegExp(
+      `<a[^>]+href="${shopUrl}"[^>]+target="_blank"[^>]+rel="noopener noreferrer"[^>]*>Let us introduce you!</a>`,
     ),
   );
 });
