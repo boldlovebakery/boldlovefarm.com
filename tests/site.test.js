@@ -160,9 +160,25 @@ test("the About page presents the planned story sections in order", () => {
   assert.ok(farmPosition >= 0);
   assert.ok(bakeryPosition > farmPosition);
   assert.ok(partnersPosition > bakeryPosition);
-  assert.ok(aboutText.includes("Our farm story is coming soon."));
+  assert.ok(
+    aboutText.includes(
+      "When we first joined a CSA as a young family we were amazed at how much better the produce tasted.",
+    ),
+  );
+  assert.ok(
+    aboutText.includes(
+      "This growing knowledge has brought us into farming and prepared foods, now doing for the community what we once did for our small family.",
+    ),
+  );
+  assert.ok(!aboutText.includes("Our farm story is coming soon."));
   assert.ok(aboutText.includes("Our bakery story is coming soon."));
   assert.ok(aboutText.includes("Our partners’ stories are coming soon."));
+  assert.match(
+    aboutPage,
+    new RegExp(
+      `<a[^>]+href="${shopUrl}"[^>]+target="_blank"[^>]+rel="noopener noreferrer"[^>]*>Let us feed you!</a>`,
+    ),
+  );
 });
 
 test("the Contact Us page includes contact details and every FAQ answer", () => {

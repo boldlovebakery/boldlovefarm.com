@@ -334,7 +334,7 @@ h1 {
 
 .about-sections {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -362,6 +362,22 @@ h1 {
 .about-section h2 {
   font-size: clamp(1.55rem, 3vw, 2rem);
   line-height: 1.05;
+}
+
+.about-section--featured {
+  grid-column: 1 / -1;
+  min-height: 0;
+}
+
+.about-story {
+  display: grid;
+  gap: 14px;
+  max-width: 72ch;
+}
+
+.about-story .primary-cta {
+  justify-self: start;
+  margin-top: 6px;
 }
 
 .placeholder-copy {

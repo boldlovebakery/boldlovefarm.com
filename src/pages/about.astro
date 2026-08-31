@@ -2,6 +2,8 @@
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const shopUrl = "https://grownby.com/farms/bold-love-farm-bakery/shop";
 ---
 
 <BaseLayout
@@ -23,16 +25,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </header>
 
         <div class="about-sections" aria-label="About Bold Love stories">
-          <section class="about-section" aria-labelledby="about-farm">
-            <span class="section-number" aria-hidden="true">01</span>
-            <div>
+          <section class="about-section about-section--featured" aria-labelledby="about-farm">
+            <div class="about-story">
               <h2 id="about-farm">About the Farm</h2>
-              <p class="placeholder-copy">Our farm story is coming soon.</p>
+              <p>
+                When we first joined a CSA as a young family we were amazed at how much better the
+                produce tasted. It made us wonder what was going on with grocery store produce.
+              </p>
+              <p>
+                We went on to grow our own food at home and learned to make all kinds of dishes and
+                to preserve as much of the produce as we could.
+              </p>
+              <p>
+                This growing knowledge has brought us into farming and prepared foods, now doing
+                for our community what we once did for our small family.
+              </p>
+              <a
+                class="primary-cta"
+                href={shopUrl}
+                target="_blank"
+                rel="noopener noreferrer">Let us feed you!</a
+              >
             </div>
           </section>
 
           <section class="about-section" aria-labelledby="about-bakery">
-            <span class="section-number" aria-hidden="true">02</span>
             <div>
               <h2 id="about-bakery">About the Bakery</h2>
               <p class="placeholder-copy">Our bakery story is coming soon.</p>
@@ -40,7 +57,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </section>
 
           <section class="about-section" aria-labelledby="about-partners">
-            <span class="section-number" aria-hidden="true">03</span>
             <div>
               <h2 id="about-partners">About Our Partners</h2>
               <p class="placeholder-copy">Our partners’ stories are coming soon.</p>
