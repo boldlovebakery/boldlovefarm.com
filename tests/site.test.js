@@ -173,7 +173,7 @@ test("the About page presents the planned story sections in order", () => {
   assert.ok(!aboutText.includes("Our farm story is coming soon."));
   assert.ok(
     aboutText.includes(
-      "I've always loved seing the delight on people's faces when you hand them a loaf of hommade sourdough bread.",
+      "I've always loved seeing the delight on people's faces when you hand them a loaf of homemade sourdough bread.",
     ),
   );
   assert.ok(
