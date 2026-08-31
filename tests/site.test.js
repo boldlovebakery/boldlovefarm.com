@@ -243,6 +243,16 @@ test("the Products page explains the complete ordering and payment process", () 
   }
 
   assert.equal((productsPage.match(/<ol class="order-steps">/g) || []).length, 1);
+  assert.deepEqual(
+    [...productsPage.matchAll(/<li(?: class="order-substep")? data-step-label="([^"]+)">\s*<div class="step-content">/g)].map(
+      (match) => match[1],
+    ),
+    ["01", "02", "2a", "2b", "05", "06", "07"],
+  );
+  assert.equal(
+    (productsPage.match(/<li class="order-substep" data-step-label="2[ab]">/g) || []).length,
+    2,
+  );
 
   const shopLinks =
     productsPage.match(new RegExp(`<a[^>]+href="${shopUrl}"[^>]*>`, "g")) || [];

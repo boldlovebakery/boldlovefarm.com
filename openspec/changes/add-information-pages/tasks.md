@@ -124,3 +124,11 @@
 ## 26. Update the Project README
 
 - [x] 26.1 Update the test-coverage description and planned-content follow-ups to match the completed information pages, then verify the documented commands and links.
+
+## 27. Group Pickup and Delivery as Substeps
+
+- [x] 27.1 Change the Products guide’s displayed labels from `03` and `04` to `2a` and `2b`, retain the seven-item ordered-list structure, and verify the labels in generated output and responsive layouts.
+
+## 28. Indent the Pickup and Delivery Substeps
+
+- [x] 28.1 Indent the `2a` and `2b` Products cards to express their relationship to step 2, retain readable mobile widths, and verify the hierarchy without horizontal overflow.

@@ -11,13 +11,13 @@ The supporting story SHALL present these three ideas as distinct paragraphs:
 2. “We bake and cook with the same care, so the food reaches you fresh, local, and full of nutrition.”
 3. “Love supporting local businesses? So do we! We carry products from 9 other local farms and producers. Shopping with us helps ensure these small, local businesses remain viable and continue providing clean food for our community.”
 
-#### Scenario: View the refreshed homepage on a desktop viewport
+#### Scenario: View the homepage on a desktop viewport
 - **WHEN** a visitor opens the generated root homepage on a desktop-sized viewport
 - **THEN** the page presents the title, new product summary, primary shop action, three-part supporting story, logo, and footer in the established black-and-gold design
 - **AND** spacing and grouping make the product breadth, freshness message, and support for nine local partners easy to identify while skimming
 - **AND** redundant superseded product or partner copy is absent
 
-#### Scenario: View the refreshed homepage on a narrow viewport
+#### Scenario: View the homepage on a narrow viewport
 - **WHEN** a visitor opens the generated root homepage on a narrow mobile viewport
 - **THEN** the new product summary and three-part story remain readable and visually distinct without horizontal overflow
 - **AND** the primary shop action, logo, and footer information remain visible and usable

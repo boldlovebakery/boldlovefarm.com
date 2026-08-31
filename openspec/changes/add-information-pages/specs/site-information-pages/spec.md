@@ -90,6 +90,8 @@ The Products page SHALL lead with the message “Local and organic products, pre
 ### Requirement: Explain the product-ordering process
 The Products page SHALL present the ordering process as seven ordered steps with nested choices where applicable:
 
+The visible labels for the pickup and delivery instructions SHALL be `2a` and `2b`, respectively, and their cards SHALL be indented to present them as alternatives under step 2 while preserving the seven-item ordered-list structure.
+
 1. Choose products.
 2. Choose pickup or delivery.
 3. For pickup, choose Bold Love Farm in Mount Airy, Blue Crab Fitness in Lisbon, or the Trek Bicycle Westminster parking lot.

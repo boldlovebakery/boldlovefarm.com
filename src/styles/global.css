@@ -520,7 +520,6 @@ h1 {
   gap: 14px;
   margin: 0;
   padding: 0;
-  counter-reset: order-step;
   list-style: none;
 }
 
@@ -532,11 +531,14 @@ h1 {
   border: 1px solid rgba(19, 13, 10, 0.1);
   border-radius: 18px;
   background: rgba(255, 252, 245, 0.76);
-  counter-increment: order-step;
+}
+
+.order-steps > .order-substep {
+  margin-left: clamp(18px, 5vw, 56px);
 }
 
 .order-steps > li::before {
-  content: counter(order-step, decimal-leading-zero);
+  content: attr(data-step-label);
   display: grid;
   place-items: center;
   width: 48px;
