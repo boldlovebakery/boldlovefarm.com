@@ -167,16 +167,32 @@ test("the About page presents the planned story sections in order", () => {
   );
   assert.ok(
     aboutText.includes(
-      "This growing knowledge has brought us into farming and prepared foods, now doing for the community what we once did for our small family.",
+      "This growing knowledge has brought us into farming and prepared foods, now doing for our community what we once did for our small family.",
     ),
   );
   assert.ok(!aboutText.includes("Our farm story is coming soon."));
-  assert.ok(aboutText.includes("Our bakery story is coming soon."));
+  assert.ok(
+    aboutText.includes(
+      "I've always loved seing the delight on people's faces when you hand them a loaf of hommade sourdough bread.",
+    ),
+  );
+  assert.ok(
+    aboutText.includes(
+      "People often tell us they're the best cookies they've ever had. Delighting you is what the bakery's all about!",
+    ),
+  );
+  assert.ok(!aboutText.includes("Our bakery story is coming soon."));
   assert.ok(aboutText.includes("Our partners’ stories are coming soon."));
   assert.match(
     aboutPage,
     new RegExp(
       `<a[^>]+href="${shopUrl}"[^>]+target="_blank"[^>]+rel="noopener noreferrer"[^>]*>Let us feed you!</a>`,
+    ),
+  );
+  assert.match(
+    aboutPage,
+    new RegExp(
+      `<a[^>]+href="${shopUrl}"[^>]+target="_blank"[^>]+rel="noopener noreferrer"[^>]*>Let us delight you!</a>`,
     ),
   );
 });
