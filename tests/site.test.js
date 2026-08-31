@@ -49,7 +49,7 @@ test("the generated homepage presents the refreshed critical content", () => {
     "We bake and cook with the same care, so the food reaches you fresh, local, and full of nutrition.",
     "Love supporting local businesses? So do we! We carry products from 9 other local farms and producers. Shopping with us helps ensure these small, local businesses remain viable and continue providing clean food for our community.",
     "USDA Certified Organic",
-    "Mount Airy, Maryland community",
+    "Proud member of the Mount Airy, Maryland community.",
   ];
 
   for (const content of requiredContent) {
