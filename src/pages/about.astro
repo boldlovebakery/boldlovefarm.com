@@ -17,10 +17,6 @@ const shopUrl = "https://grownby.com/farms/bold-love-farm-bakery/shop";
 
         <header class="page-intro">
           <h1 class="page-title">About Bold Love</h1>
-          <p class="page-lede">
-            We’re gathering the stories behind our farm, our bakery, and the people we’re proud to
-            work alongside. There’s more to come.
-          </p>
         </header>
 
         <div class="about-sections" aria-label="About Bold Love stories">
@@ -28,8 +24,7 @@ const shopUrl = "https://grownby.com/farms/bold-love-farm-bakery/shop";
             <div class="about-story">
               <h2 id="about-farm">About the Farm</h2>
               <p>
-                When we first joined a CSA as a young family we were amazed at how much better the
-                produce tasted. It made us wonder what was going on with grocery store produce.
+                When we first joined a CSA as a young family we were amazed at the abundance and variety of produce that can be grown locally, and how much better it all tasted than what we found at the grocery store.
               </p>
               <p>
                 We went on to grow our own food at home and learned to make all kinds of dishes and
@@ -49,28 +44,35 @@ const shopUrl = "https://grownby.com/farms/bold-love-farm-bakery/shop";
           </section>
 
           <section class="about-section" aria-labelledby="about-bakery">
-            <div class="about-story">
-              <h2 id="about-bakery">About the Bakery</h2>
-              <p>
-                I've always loved seeing the delight on people's faces when you hand them a loaf of
-                homemade sourdough bread. The looks of it, the smell of it, the incredible
-                taste—people's faces just light up.
-              </p>
-              <p>
-                And when you give someone a fresh baked cookie that's made with ingredients that
-                are all about quality and taste, not about how long they can last on a shelf or how
-                many pennies we can squeeze out of them.
-              </p>
-              <p>
-                People often tell us they're the best cookies they've ever had. Delighting you is
-                what the bakery's all about!
-              </p>
-              <a
-                class="primary-cta"
-                href={shopUrl}
-                target="_blank"
-                rel="noopener noreferrer">Let us delight you!</a
-              >
+            <div class="about-story about-story--with-photo">
+              <div class="about-story-copy">
+                <h2 id="about-bakery">About the Bakery</h2>
+                <p>
+                  I've always loved seeing the delight on people's faces when you hand them a loaf of
+                  homemade sourdough bread. The looks of it, the smell of it, the incredible
+                  taste—people's faces just light up.
+                </p>
+                <p>
+                  And when you give someone a fresh baked cookie that's made with ingredients that
+                  are all about quality and taste, not about how long they can last on a shelf.People often tell us they're the best cookies they've ever had. Delighting you is
+                  what the bakery's all about!
+                </p>
+                <a
+                  class="primary-cta"
+                  href={shopUrl}
+                  target="_blank"
+                  rel="noopener noreferrer">Let us delight you!</a
+                >
+              </div>
+
+              <figure class="about-portrait">
+                <img
+                  src="/george-in-oregon.png"
+                  alt="George smiling outdoors in Oregon"
+                  width="503"
+                  height="555"
+                />
+              </figure>
             </div>
           </section>
 
@@ -78,14 +80,14 @@ const shopUrl = "https://grownby.com/farms/bold-love-farm-bakery/shop";
             <div class="about-story">
               <h2 id="about-partners">About Our Partners</h2>
               <p>
-                What if we could get <strong>all</strong> of our food from local companies? From
+                What if we could get <em>all</em> of our food from local companies? From
                 people who live in our community, who care about the land, the animals, and
                 especially us, their customers.
               </p>
               <p>
-                We don't have everything yet but we collaborate with 9 local companies to offer
-                you produce, mushrooms, meat, cheese, eggs, jam, honey, microgreens, coffee, and
-                tea. That's a lot!
+                We don't have everything yet but we collaborate with many local companies to offer
+                you produce, mushrooms, meat, cheese, eggs, jam, honey, microgreens, coffee,
+                tea, and more. That's a lot and we're adding more all the time!
               </p>
               <a
                 class="primary-cta"

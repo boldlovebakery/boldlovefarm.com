@@ -173,7 +173,7 @@ test("the About page presents the planned story sections in order", () => {
   assert.ok(partnersPosition > bakeryPosition);
   assert.ok(
     aboutText.includes(
-      "When we first joined a CSA as a young family we were amazed at how much better the produce tasted.",
+      "When we first joined a CSA as a young family we were amazed at the abundance and variety of produce that can be grown locally, and how much better it all tasted than what we found at the grocery store.",
     ),
   );
   assert.ok(
@@ -200,10 +200,10 @@ test("the About page presents the planned story sections in order", () => {
   );
   assert.ok(
     aboutText.includes(
-      "We don't have everything yet but we collaborate with 9 local companies to offer you produce, mushrooms, meat, cheese, eggs, jam, honey, microgreens, coffee, and tea. That's a lot!",
+      "We don't have everything yet but we collaborate with many local companies to offer you produce, mushrooms, meat, cheese, eggs, jam, honey, microgreens, coffee, tea, and more. That's a lot and we're adding more all the time!",
     ),
   );
-  assert.match(aboutPage, /What if we could get <strong>all<\/strong> of our food/);
+  assert.match(aboutPage, /What if we could get <em>all<\/em> of our food/);
   assert.ok(!aboutText.includes("Our partners’ stories are coming soon."));
   assert.match(
     aboutPage,
@@ -222,6 +222,10 @@ test("the About page presents the planned story sections in order", () => {
     new RegExp(
       `<a[^>]+href="${shopUrl}"[^>]+target="_blank"[^>]+rel="noopener noreferrer"[^>]*>Let us introduce you!</a>`,
     ),
+  );
+  assert.match(
+    aboutPage,
+    /<img[^>]+src="\/george-in-oregon\.png"[^>]+alt="George smiling outdoors in Oregon"/,
   );
 });
 
