@@ -332,7 +332,12 @@ test("the Products page explains the complete ordering and payment process", () 
 });
 
 test("all required local assets are included in the generated site", async () => {
-  const assetPaths = ["favicon.ico", "bold-love-logo.png", "farm-background.png"];
+  const assetPaths = [
+    "favicon.ico",
+    "bold-love-logo.png",
+    "farm-background.png",
+    "usda-organic-logo.gif",
+  ];
 
   for (const assetPath of assetPaths) {
     assert.ok(homepage.includes(`/${assetPath}`) || assetPath === "farm-background.png");
