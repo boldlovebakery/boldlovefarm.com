@@ -338,6 +338,27 @@ h1 {
   gap: 18px;
 }
 
+.about-intro {
+  max-width: none;
+  grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.about-intro-photo {
+  width: min(100%, 285px);
+  margin: 0;
+  justify-self: end;
+}
+
+.about-intro-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 12px 24px rgba(19, 13, 10, 0.14);
+}
+
 .about-section {
   min-height: 230px;
   padding: 24px;
@@ -372,44 +393,7 @@ h1 {
 .about-story {
   display: grid;
   gap: 14px;
-  max-width: 72ch;
-}
-
-.about-story--with-photo {
-  grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
-  align-items: center;
-  gap: clamp(24px, 4vw, 48px);
   max-width: none;
-}
-
-.about-story-copy {
-  display: grid;
-  gap: 14px;
-}
-
-.about-portrait {
-  margin: 0;
-}
-
-.about-portrait img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 12px 24px rgba(19, 13, 10, 0.14);
-}
-
-.about-portrait--farm {
-  aspect-ratio: 503 / 555;
-  overflow: hidden;
-  border-radius: 14px;
-  box-shadow: 0 12px 24px rgba(19, 13, 10, 0.14);
-}
-
-.about-portrait--farm img {
-  height: 100%;
-  object-fit: cover;
-  box-shadow: none;
 }
 
 .about-story .primary-cta {
@@ -782,12 +766,13 @@ h1 {
     min-height: 0;
   }
 
-  .about-story--with-photo {
+  .about-intro {
     grid-template-columns: 1fr;
   }
 
-  .about-portrait {
+  .about-intro-photo {
     width: min(100%, 360px);
+    justify-self: start;
   }
 
   .contact-intro {

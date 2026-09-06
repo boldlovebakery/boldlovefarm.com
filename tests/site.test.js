@@ -88,6 +88,8 @@ test("both shop links use the correct destination and new-tab protections", () =
     assert.match(link, /target="_blank"/);
     assert.match(link, /rel="noopener noreferrer"/);
   }
+
+  assert.ok(homepageText.includes("Shop Bold Love Online"));
 });
 
 test("the homepage links to every information page", () => {
@@ -173,7 +175,7 @@ test("the About page presents the planned story sections in order", () => {
   assert.ok(partnersPosition > bakeryPosition);
   assert.ok(
     aboutText.includes(
-      "When we first joined a CSA as a young family we were amazed at the abundance and variety of produce that can be grown locally, and how much better it all tasted than what we found at the grocery store.",
+      "As a young family looking to get more fresh veggies into our diet, we joined a local CSA knowing it would helps us achieve that goal. We were amazed at the abundance and variety of produce that can be grown locally, and how much better it all tasted than what we found at the grocery store.",
     ),
   );
   assert.ok(
@@ -227,10 +229,10 @@ test("the About page presents the planned story sections in order", () => {
     aboutPage,
     /<img[^>]+src="\/bakery-market\.jpg"[^>]+alt="Kim and George smiling with their dog at the bakery's market stand"/,
   );
-  assert.match(
-    aboutPage,
-    /<img[^>]+src="\/kim-at-market\.jpg"[^>]+alt="Kim smiling behind a market table filled with farm produce"/,
-  );
+  assert.equal((aboutPage.match(/\/bakery-market\.jpg/g) || []).length, 1);
+  assert.ok(aboutPage.indexOf("/bakery-market.jpg") < aboutPage.indexOf("About the Farm"));
+  assert.ok(!aboutPage.includes("/kim-at-market.jpg"));
+  assert.ok(!aboutPage.includes("about-story--with-photo"));
 });
 
 test("the Contact Us page includes contact details and every FAQ answer", () => {

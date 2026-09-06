@@ -66,7 +66,7 @@ The production build is served from both `boldlovefarm.com` and `boldlovebakery.
 
 Plausible ignores `localhost` by default. Leave that behavior enabled so local development and automated checks do not affect production traffic figures.
 
-After deploying, visit each production domain and confirm the visit appears in Plausible's real-time dashboard. Click a **Shop Online** button and confirm that GrownBy appears under outbound-link clicks. Content-blocking browser extensions may prevent analytics from loading, so use a private window without extensions when diagnosing the integration.
+After deploying, visit each production domain and confirm the visit appears in Plausible's real-time dashboard. Click a **Shop Bold Love Online** button and confirm that GrownBy appears under outbound-link clicks. Content-blocking browser extensions may prevent analytics from loading, so use a private window without extensions when diagnosing the integration.
 
 ## Project structure
 
