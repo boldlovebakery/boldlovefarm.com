@@ -225,7 +225,7 @@ test("the About page presents the planned story sections in order", () => {
   );
   assert.match(
     aboutPage,
-    /<img[^>]+src="\/george-in-oregon\.png"[^>]+alt="George smiling outdoors in Oregon"/,
+    /<img[^>]+src="\/bakery-market\.jpg"[^>]+alt="Kim and George smiling with their dog at the bakery's market stand"/,
   );
   assert.match(
     aboutPage,
@@ -290,7 +290,7 @@ test("the Products page explains the complete ordering and payment process", () 
   assert.ok(!productsText.includes("From cart to kitchen"));
 
   const requiredContent = [
-    "Local and organic products, prepared foods, sourdough breads, pastries, local meats, cheeses, jam, eggs, microgreens, honey, coffee, and tea.",
+    "Local and organic produce, prepared foods, sourdough breads, pastries, local meats, cheeses, jam, eggs, microgreens, honey, coffee, and tea.",
     "Bold Love Farm (Mount Airy)",
     "Blue Crab Fitness (Lisbon)",
     "Trek Bicycle Westminster parking lot",
