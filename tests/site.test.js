@@ -227,6 +227,10 @@ test("the About page presents the planned story sections in order", () => {
     aboutPage,
     /<img[^>]+src="\/george-in-oregon\.png"[^>]+alt="George smiling outdoors in Oregon"/,
   );
+  assert.match(
+    aboutPage,
+    /<img[^>]+src="\/kim-at-market\.jpg"[^>]+alt="Kim smiling behind a market table filled with farm produce"/,
+  );
 });
 
 test("the Contact Us page includes contact details and every FAQ answer", () => {

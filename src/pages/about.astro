@@ -21,25 +21,36 @@ const shopUrl = "https://grownby.com/farms/bold-love-farm-bakery/shop";
 
         <div class="about-sections" aria-label="About Bold Love stories">
           <section class="about-section about-section--featured" aria-labelledby="about-farm">
-            <div class="about-story">
-              <h2 id="about-farm">About the Farm</h2>
-              <p>
-                When we first joined a CSA as a young family we were amazed at the abundance and variety of produce that can be grown locally, and how much better it all tasted than what we found at the grocery store.
-              </p>
-              <p>
-                We went on to grow our own food at home and learned to make all kinds of dishes and
-                to preserve as much of the produce as we could.
-              </p>
-              <p>
-                This growing knowledge has brought us into farming and prepared foods, now doing
-                for our community what we once did for our small family.
-              </p>
-              <a
-                class="primary-cta"
-                href={shopUrl}
-                target="_blank"
-                rel="noopener noreferrer">Let us feed you!</a
-              >
+            <div class="about-story about-story--with-photo">
+              <div class="about-story-copy">
+                <h2 id="about-farm">About the Farm</h2>
+                <p>
+                  When we first joined a CSA as a young family we were amazed at the abundance and variety of produce that can be grown locally, and how much better it all tasted than what we found at the grocery store.
+                </p>
+                <p>
+                  We went on to grow our own food at home and learned to make all kinds of dishes and
+                  to preserve as much of the produce as we could.
+                </p>
+                <p>
+                  This growing knowledge has brought us into farming and prepared foods, now doing
+                  for our community what we once did for our small family.
+                </p>
+                <a
+                  class="primary-cta"
+                  href={shopUrl}
+                  target="_blank"
+                  rel="noopener noreferrer">Let us feed you!</a
+                >
+              </div>
+
+              <figure class="about-portrait about-portrait--farm">
+                <img
+                  src="/kim-at-market.jpg"
+                  alt="Kim smiling behind a market table filled with farm produce"
+                  width="674"
+                  height="900"
+                />
+              </figure>
             </div>
           </section>
 

@@ -399,6 +399,19 @@ h1 {
   box-shadow: 0 12px 24px rgba(19, 13, 10, 0.14);
 }
 
+.about-portrait--farm {
+  aspect-ratio: 503 / 555;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 12px 24px rgba(19, 13, 10, 0.14);
+}
+
+.about-portrait--farm img {
+  height: 100%;
+  object-fit: cover;
+  box-shadow: none;
+}
+
 .about-story .primary-cta {
   justify-self: start;
   margin-top: 6px;
