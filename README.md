@@ -95,7 +95,7 @@ After deploying, visit each production domain and confirm the visit appears in P
 
 The About page includes the current farm, bakery, and partner stories, with each section linking visitors to the online store.
 
-The blog has a local draft template, not a published article. Production shows an intentional empty state until the first post is published.
+The blog has a local draft template, not a published article. Production shows an intentional empty state at `/blog/`, but the shared navigation hides the Blog link while there are no published posts. Publishing the first post makes the link appear automatically; drafts do not count.
 
 ## Writing and publishing blog posts
 
@@ -122,6 +122,8 @@ Write ordinary Markdown below the frontmatter. The layout supplies the title as 
 Run `npm run dev` and visit `/blog/` or `/blog/draft-template/` to preview drafts. Drafts have a visible label and a `noindex` directive. They are completely excluded from production article routes, listings, and RSS; the feed excludes drafts even during development. A local preview is not an access-controlled publishing system, so do not put confidential material in the repository.
 
 To publish, replace the template content, choose the publication date, and change `draft: true` to `draft: false`. Posts sort newest first. Dates do not schedule publication: even a future-dated non-draft post will appear in the next deployment.
+
+The Blog navigation link is temporarily guarded in `src/components/SiteHeader.astro`. Once the second blog post has been published, remove the `showBlog` guard and render the Blog navigation item unconditionally. Update the corresponding navigation expectations in `tests/blog.test.js` and `tests/site.test.js` at the same time.
 
 Run `npm test`, then `npm run preview` to inspect the production output (without drafts). Missing required metadata or an image without alternative text fails the build. Publishing still requires the normal GitHub Pages deployment described below; editing a file or previewing locally does not deploy it.
 

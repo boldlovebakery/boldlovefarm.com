@@ -96,7 +96,6 @@ test("both shop links use the correct destination and new-tab protections", () =
 test("the homepage links to every information page", () => {
   const requiredLinks = [
     ["About", "/about/"],
-    ["Blog", "/blog/"],
     ["Products", "/products/"],
     ["Contact Us", "/contact/"],
   ];
@@ -156,7 +155,7 @@ test("all information pages have metadata, landmarks, and shared navigation", ()
       ),
     );
 
-    for (const destination of ["/", "/about/", "/blog/", "/products/", "/contact/"]) {
+    for (const destination of ["/", "/about/", "/products/", "/contact/"]) {
       assert.ok(
         page.document.includes(`href="${destination}"`),
         `Expected ${page.name} page navigation to include ${destination}`,

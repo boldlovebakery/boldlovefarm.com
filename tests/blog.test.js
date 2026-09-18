@@ -12,10 +12,9 @@ test("all public pages advertise canonical farm URLs and RSS", async () => {
     const html = await readFile(path.join(root, "dist", route, "index.html"), "utf8");
     assert.ok(html.includes(`rel="canonical" href="https://boldlovefarm.com/${route}"`));
     assert.match(html, /type="application\/rss\+xml"[^>]+href="https:\/\/boldlovefarm.com\/rss.xml"/);
-    assert.match(html, /href="\/blog\/"/);
+    assert.doesNotMatch(html.match(/<nav\b[\s\S]*?<\/nav>/)?.[0] || "", /href="\/blog\/"/);
   }
   const blog = await readFile(path.join(root, "dist/blog/index.html"), "utf8");
-  assert.match(blog, /href="\/blog\/" aria-current="page"/);
   assert.ok(!blog.includes("Your next story"));
   assert.ok(!(await readdir(path.join(root, "dist/blog"))).includes("draft-template"));
   const feed = await readFile(path.join(root, "dist/rss.xml"), "utf8");
@@ -40,6 +39,14 @@ test("published articles, images, ordering, and invalid metadata survive real bu
     const frontmatter = (title, date) => `---\ntitle: "${title}"\ndescription: "A test story & details"\npublishDate: ${date}\ndraft: false\n`;
     const imageFields = "featureImage: ../../assets/blog/test.png\nfeatureImageAlt: Bold Love logo\n";
     await writeFile(path.join(posts, "test-new.md"), frontmatter("New story", "2026-09-18") + imageFields + "updatedDate: 2026-09-19\n---\n\n## Test heading\n\nA complete article body.\n");
+    build();
+    // The first published post enables Blog everywhere; drafts alone do not.
+    for (const route of ["", "about/", "contact/", "products/", "blog/", "blog/test-new/"]) {
+      const page = await readFile(path.join(directory, "dist", route, "index.html"), "utf8");
+      const navigation = page.match(/<nav\b[\s\S]*?<\/nav>/)?.[0] || "";
+      assert.match(navigation, /href="\/blog\/"/);
+      if (route.startsWith("blog/")) assert.match(navigation, /href="\/blog\/" aria-current="page"/);
+    }
     await writeFile(path.join(posts, "test-old.md"), frontmatter("Older story", "2026-09-17") + "---\n\nEarlier article.\n");
     build();
     const html = await readFile(path.join(directory, "dist/blog/test-new/index.html"), "utf8");

@@ -1,10 +1,15 @@
 ---
+import { getBlogPosts } from "../lib/blog.js";
+
 interface Props {
   currentPage?: string;
   showBrand?: boolean;
 }
 
 const { currentPage = "", showBrand = true } = Astro.props;
+// TODO: Remove this guard and show Blog unconditionally after our second blog post is published.
+// Drafts do not count, even when previewing locally.
+const showBlog = (await getBlogPosts(false)).length > 0;
 ---
 
 <header class={showBrand ? "site-header" : "site-header site-header--nav-only"}>
@@ -36,9 +41,9 @@ const { currentPage = "", showBrand = true } = Astro.props;
           aria-current={currentPage === "about" ? "page" : undefined}>About</a
         >
       </li>
-      <li>
+      {showBlog && <li>
         <a class="site-nav-link" href="/blog/" aria-current={currentPage === "blog" ? "page" : undefined}>Blog</a>
-      </li>
+      </li>}
       <li>
         <a
           class="site-nav-link"
