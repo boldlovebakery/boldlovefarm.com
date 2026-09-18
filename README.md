@@ -41,7 +41,7 @@ Build the site and run the focused checks against the generated files:
 npm test
 ```
 
-The checks cover metadata and content across all four pages, internal navigation, shop-link behavior, the Contact FAQ, the Products ordering guide, local assets, and the Plausible and Mailchimp loaders.
+The checks cover metadata and content across all five main pages, internal navigation, shop-link behavior, the Contact FAQ, the Products ordering guide, local assets, and the Plausible and Mailchimp loaders. Isolated blog fixture builds also check published articles, optimized images, RSS ordering, draft exclusion, and invalid frontmatter errors.
 
 To inspect the production build locally:
 
@@ -74,12 +74,19 @@ After deploying, visit each production domain and confirm the visit appears in P
 - `src/pages/about.astro` — About page and its three planned story sections
 - `src/pages/contact.astro` — contact details and frequently asked questions
 - `src/pages/products.astro` — product overview and ordering guide
+- `src/pages/blog/` — blog index and static article routes
+- `src/pages/rss.xml.js` — published-post RSS feed
+- `src/content/blog/` — Markdown posts and a local draft template
+- `src/content.config.ts` — blog frontmatter validation
+- `src/lib/blog.js` — draft filtering, ordering, and date formatting
+- `src/layouts/BlogLayout.astro` — article presentation
 - `src/layouts/BaseLayout.astro` — document shell and metadata
 - `src/components/SiteHeader.astro` — shared primary navigation
 - `src/components/SiteFooter.astro` — footer content
 - `src/styles/global.css` — visual design and responsive rules
 - `public/` — files copied unchanged into the generated site
 - `tests/site.test.js` — checks for the generated site
+- `tests/blog.test.js` — blog output and isolated publishing/validation checks
 - `.github/workflows/deploy.yml` — GitHub Pages build and deployment
 
 `dist/` is generated and is not committed.
@@ -87,6 +94,38 @@ After deploying, visit each production domain and confirm the visit appears in P
 ## Content status
 
 The About page includes the current farm, bakery, and partner stories, with each section linking visitors to the online store.
+
+The blog has a local draft template, not a published article. Production shows an intentional empty state until the first post is published.
+
+## Writing and publishing blog posts
+
+Copy `src/content/blog/draft-template.md` to a new Markdown file in the same directory, such as `summer-at-the-farm.md`. Its filename becomes `/blog/summer-at-the-farm/`; keep that filename stable after publishing so existing links keep working.
+
+Each post begins with YAML frontmatter:
+
+```yaml
+---
+title: "Summer at the farm"
+description: "A short introduction for the blog listing, search results, and RSS."
+publishDate: 2026-09-18
+draft: true
+# updatedDate: 2026-09-19
+# featureImage: ../../assets/blog/summer-at-the-farm.jpg
+# featureImageAlt: Describe the photograph for someone who cannot see it.
+---
+```
+
+`title`, `description`, `publishDate`, and `draft` are required. Dates use `YYYY-MM-DD`. `updatedDate` is optional. A `featureImage` is optional, but requires meaningful `featureImageAlt` text. Create `src/assets/blog/` when adding your first photograph, and use a relative path from the Markdown file. Astro optimizes these local feature images. As a practical starting point, resize photographs to roughly 1600–2000 pixels wide and compress them before adding them to Git; avoid committing camera originals.
+
+Write ordinary Markdown below the frontmatter. The layout supplies the title as the only first-level heading, so start body headings with `##`. Use short paragraphs, lists, descriptive links, and `![meaningful alternative text](path-to-image)` for body images.
+
+Run `npm run dev` and visit `/blog/` or `/blog/draft-template/` to preview drafts. Drafts have a visible label and a `noindex` directive. They are completely excluded from production article routes, listings, and RSS; the feed excludes drafts even during development. A local preview is not an access-controlled publishing system, so do not put confidential material in the repository.
+
+To publish, replace the template content, choose the publication date, and change `draft: true` to `draft: false`. Posts sort newest first. Dates do not schedule publication: even a future-dated non-draft post will appear in the next deployment.
+
+Run `npm test`, then `npm run preview` to inspect the production output (without drafts). Missing required metadata or an image without alternative text fails the build. Publishing still requires the normal GitHub Pages deployment described below; editing a file or previewing locally does not deploy it.
+
+The feed is `/rss.xml`, with subscription links on the blog and automatic discovery metadata on every page. Canonical page URLs, social URLs, and RSS links use `https://boldlovefarm.com`, configured in `astro.config.mjs`. Both domains may still serve the site; the future HTTP 301 redirect from `boldlovebakery.com` requires separate hosting/domain configuration and is not implemented here.
 
 ## GitHub Pages deployment
 

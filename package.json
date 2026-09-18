@@ -9,10 +9,11 @@
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
-    "test": "npm run build && node --test tests/site.test.js"
+    "test": "npm run build && node --test tests/*.test.js"
   },
   "devDependencies": {
-    "astro": "^7.2.9"
+    "@astrojs/rss": "^4.0.19",
+    "astro": "^7.3.3"
   },
   "allowScripts": {
     "esbuild@0.28.2": true,

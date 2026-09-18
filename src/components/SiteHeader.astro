@@ -37,6 +37,9 @@ const { currentPage = "", showBrand = true } = Astro.props;
         >
       </li>
       <li>
+        <a class="site-nav-link" href="/blog/" aria-current={currentPage === "blog" ? "page" : undefined}>Blog</a>
+      </li>
+      <li>
         <a
           class="site-nav-link"
           href="/products/"

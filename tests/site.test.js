@@ -8,6 +8,7 @@ const homepage = await readFile(new URL("index.html", outputDirectory), "utf8");
 const aboutPage = await readFile(new URL("about/index.html", outputDirectory), "utf8");
 const contactPage = await readFile(new URL("contact/index.html", outputDirectory), "utf8");
 const productsPage = await readFile(new URL("products/index.html", outputDirectory), "utf8");
+const blogPage = await readFile(new URL("blog/index.html", outputDirectory), "utf8");
 
 function visibleText(document) {
   return document
@@ -43,7 +44,7 @@ test("the generated homepage includes the existing Mailchimp popup loader", () =
 });
 
 test("every generated page includes the Plausible analytics loader", () => {
-  for (const page of [homepage, aboutPage, contactPage, productsPage]) {
+  for (const page of [homepage, aboutPage, contactPage, productsPage, blogPage]) {
     assert.equal(
       (page.match(/https:\/\/plausible\.io\/js\/pa-Wpa3aD0Sz7bNtD4RME7fK\.js/g) || []).length,
       1,
@@ -95,6 +96,7 @@ test("both shop links use the correct destination and new-tab protections", () =
 test("the homepage links to every information page", () => {
   const requiredLinks = [
     ["About", "/about/"],
+    ["Blog", "/blog/"],
     ["Products", "/products/"],
     ["Contact Us", "/contact/"],
   ];
@@ -154,7 +156,7 @@ test("all information pages have metadata, landmarks, and shared navigation", ()
       ),
     );
 
-    for (const destination of ["/", "/about/", "/products/", "/contact/"]) {
+    for (const destination of ["/", "/about/", "/blog/", "/products/", "/contact/"]) {
       assert.ok(
         page.document.includes(`href="${destination}"`),
         `Expected ${page.name} page navigation to include ${destination}`,

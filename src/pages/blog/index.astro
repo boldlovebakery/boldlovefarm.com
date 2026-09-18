@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { getBlogPosts, formatPostDate } from "../../lib/blog.js";
+const posts = await getBlogPosts();
+---
+
+<BaseLayout title="Blog | Bold Love Farm & Bakery" description="Stories from our farm, our bakery, and the local people who help feed our community.">
+  <main class="page content-page">
+    <div class="content-layout">
+      <article class="panel content-panel">
+        <SiteHeader currentPage="blog" />
+        <header class="page-intro">
+          <h1 class="page-title">The Bold Love Blog</h1>
+          <p class="page-lede">Stories from the farm, the oven, and our community.</p>
+        </header>
+        {posts.length === 0 ? (
+          <div class="blog-empty">
+            <h2>Our first stories are on their way.</h2>
+            <p>In the meantime, get to know <a class="text-link" href="/about/">the people behind Bold Love</a> or explore <a class="text-link" href="/products/">what we grow and make</a>.</p>
+          </div>
+        ) : (
+          <div class="blog-list">
+            {posts.map((post) => (
+              <article class="blog-summary">
+                {post.data.featureImage && <a href={`/blog/${post.id}/`} tabindex="-1" aria-hidden="true"><Image src={post.data.featureImage} alt="" width={640} class="blog-thumbnail" /></a>}
+                <div class="blog-summary-copy">
+                  <div class="blog-meta">
+                    {post.data.draft && <span class="draft-label">Draft — local preview</span>}
+                    <time datetime={post.data.publishDate.toISOString()}>{formatPostDate(post.data.publishDate)}</time>
+                  </div>
+                  <h2><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
+                  <p>{post.data.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+        <p><a class="text-link" href="/rss.xml">Subscribe via RSS</a></p>
+        <SiteFooter />
+      </article>
+    </div>
+  </main>
+</BaseLayout>

@@ -4,12 +4,22 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  article?: boolean;
+  socialImage?: string;
+  socialImageAlt?: string;
+  draft?: boolean;
 }
 
 const {
   title = "Bold Love Farm & Bakery",
   description = "Local food grown, baked, and prepared with care in Mount Airy, Maryland.",
+  article = false,
+  socialImage,
+  socialImageAlt,
+  draft = false,
 } = Astro.props;
+const pathname = Astro.url.pathname.replace(/\/$/, "") + "/";
+const canonical = new URL(pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -19,6 +29,16 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="Bold Love Blog" href={new URL("/rss.xml", Astro.site)} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta name="twitter:card" content={socialImage ? "summary_large_image" : "summary"} />
+    {socialImage && <meta property="og:image" content={new URL(socialImage, Astro.site)} />}
+    {socialImageAlt && <meta property="og:image:alt" content={socialImageAlt} />}
+    {draft && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <!-- Privacy-friendly analytics by Plausible. -->
     <script

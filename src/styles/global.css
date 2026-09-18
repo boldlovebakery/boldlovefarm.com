@@ -31,6 +31,36 @@ a {
   color: inherit;
 }
 
+.blog-list { display: grid; gap: 32px; }
+.blog-summary { display: flex; gap: 24px; padding-block: 24px; border-top: 1px solid var(--line-strong); }
+.blog-summary > a { flex: 0 0 30%; }
+.blog-summary-copy { display: grid; align-content: start; gap: 12px; min-width: 0; }
+.blog-summary h2, .blog-empty h2 { margin: 0; font-family: Georgia, serif; font-size: 1.8rem; line-height: 1.2; }
+.blog-summary h2 a { text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.blog-thumbnail, .blog-feature { display: block; width: 100%; height: auto; border-radius: 16px; }
+.blog-heading { display: grid; justify-items: start; gap: 20px; min-width: 0; }
+.blog-heading h1 { overflow-wrap: anywhere; }
+.blog-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted); font-size: 0.9rem; }
+.draft-label { display: inline-block; padding: 4px 10px; border: 1px dashed currentColor; border-radius: 4px; font-size: 0.85rem; }
+.blog-empty { display: grid; gap: 16px; border-block: 1px solid var(--line-strong); padding-block: 32px; }
+.blog-prose { width: 100%; max-width: 68ch; margin-inline: auto; font-size: 1.1rem; line-height: 1.75; overflow-wrap: anywhere; min-width: 0; }
+.blog-prose > * + * { margin-top: 1.25em; }
+.blog-prose h2, .blog-prose h3, .blog-prose h4 { font-family: Georgia, serif; line-height: 1.25; margin-bottom: 0.5em; }
+.blog-prose h2 { font-size: 1.8em; }
+.blog-prose h3 { font-size: 1.4em; }
+.blog-prose img { max-width: 100%; height: auto; border-radius: 12px; }
+.blog-prose li + li { margin-top: 0.4em; }
+.blog-prose blockquote { margin-inline: 0; border-left: 2px solid var(--gold); padding-left: 24px; color: var(--muted); }
+.blog-prose pre { overflow-x: auto; padding: 16px; border-radius: 8px; }
+.blog-prose a { font-weight: 500; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.blog-prose a:focus-visible, .blog-summary a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.blog-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; border-top: 1px solid var(--line-strong); padding-top: 28px; }
+@media (max-width: 600px) {
+  .blog-summary { flex-direction: column; }
+  .blog-summary > a { flex-basis: auto; }
+  .blog-prose { font-size: 1rem; }
+}
+
 p {
   margin: 0;
   line-height: 1.65;
