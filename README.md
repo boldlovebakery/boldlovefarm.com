@@ -4,7 +4,7 @@ This repository is the canonical source for the website published at both [boldl
 
 The site is built with Astro and published as static files through GitHub Pages.
 
-The page itself uses Astro templates and CSS. It does not use a frontend framework. Its only client-side JavaScript is Plausible's privacy-friendly analytics loader and Mailchimp's connected-site loader, which provides the existing signup popup.
+The site itself uses Astro templates and CSS. It does not use a frontend framework. Its only client-side JavaScript is Plausible's privacy-friendly analytics loader and Mailchimp's connected-site loader, which provides the existing signup popup.
 
 ## Requirements
 
@@ -71,7 +71,7 @@ After deploying, visit each production domain and confirm the visit appears in P
 ## Project structure
 
 - `src/pages/index.astro` — homepage content and structure
-- `src/pages/about.astro` — About page and its three planned story sections
+- `src/pages/about.astro` — About page and its three story sections
 - `src/pages/contact.astro` — contact details and frequently asked questions
 - `src/pages/products.astro` — product overview and ordering guide
 - `src/pages/blog/` — blog index and static article routes
@@ -87,6 +87,8 @@ After deploying, visit each production domain and confirm the visit appears in P
 - `public/` — files copied unchanged into the generated site
 - `tests/site.test.js` — checks for the generated site
 - `tests/blog.test.js` — blog output and isolated publishing/validation checks
+- `openspec/specs/` — current behavioral specifications
+- `openspec/changes/archive/` — completed OpenSpec changes and their implementation records
 - `.github/workflows/deploy.yml` — GitHub Pages build and deployment
 
 `dist/` is generated and is not committed.
@@ -170,26 +172,71 @@ git remote -v
 
 ## Deploying both sites
 
-Before deploying, verify the site locally:
+### Finish and archive planned work
+
+If the release has an active OpenSpec change, complete every task and validate it before archiving:
+
+```sh
+openspec list
+openspec validate your-change-name --type change --strict
+openspec archive your-change-name
+openspec validate --specs
+```
+
+Replace `your-change-name` with the active change name. Archiving should sync its delta specifications into `openspec/specs/`; review and commit those changes with the implementation before merging. `openspec list` should report no active changes when every planned change in the release is complete.
+
+### Compare production before merging
+
+Fetch both production repositories and confirm their `main` branches contain the same commits:
+
+```sh
+git fetch boldloveBAKERY.com-production main
+git fetch boldloveFARM.com-production main
+git log --left-right --graph --oneline \
+  boldloveBAKERY.com-production/main...boldloveFARM.com-production/main
+```
+
+No log output means the production branches match. If commits appear on either side, reconcile that divergence before merging or deploying; do not force-push either repository.
+
+With a clean working tree, switch to `main`, update it from production, and fast-forward it to the reviewed feature branch:
+
+```sh
+git status --short
+git switch main
+git merge --ff-only boldloveBAKERY.com-production/main
+git merge --ff-only your-feature-branch
+```
+
+Replace `your-feature-branch` with the branch being released. An empty `git status --short` output confirms the working tree is clean. If either fast-forward fails, inspect the differing commits and resolve them with a normal reviewed merge or rebase rather than forcing the operation.
+
+### Verify and deploy
+
+Install from the lockfile and test the exact merged `main` commit:
 
 ```sh
 npm ci
 npm test
 ```
 
-Then push the same `main` commit to both production repositories:
+Confirm the working tree remains clean, then push that same `main` commit to both production repositories:
 
 ```sh
+git status --short
+git log -1 --oneline
 git push both-production main
 ```
 
 That single command triggers the same Pages workflow in both repositories. Check the Actions tab in each repository and confirm both **Deploy to GitHub Pages** runs succeed.
 
-Avoid force-pushing either production repository. If one push fails, inspect the commits present on only one side before integrating them. For example:
+After both workflows finish, open each production domain and check the homepage, primary navigation, store link, and any pages changed by the release. Confirm that canonical URLs still use `https://boldlovefarm.com`; then check Plausible's real-time dashboard and outbound-link activity.
+
+If one push fails, fetch both repositories again and inspect the commits present on only one side. For example:
 
 ```sh
-git fetch boldloveFARM.com-production
-git log --left-right --graph --oneline main...boldloveFARM.com-production/main
+git fetch boldloveBAKERY.com-production main
+git fetch boldloveFARM.com-production main
+git log --left-right --graph --oneline \
+  boldloveBAKERY.com-production/main...boldloveFARM.com-production/main
 ```
 
 After resolving the divergence with a normal merge or rebase, push `main` through `both-production` again.
