@@ -65,7 +65,7 @@ The index handles zero published posts with a designed empty state. No paginatio
 
 ### 4. Reuse the shared site shell and add article-specific presentation
 
-Extend `SiteHeader` with a Blog item and use the existing current-page mechanism for both the index and article routes. Create a blog article layout that composes `BaseLayout`, `SiteHeader`, and `SiteFooter`, and add focused global CSS for:
+Extend `SiteHeader` with a Blog item that is shown only when the production-visible collection contains at least one published post. The check must explicitly exclude drafts even during local development, so merely creating a draft does not expose an unfinished blog through shared navigation. The first published post enables the link automatically, and the existing current-page mechanism identifies Blog on the index and article routes whenever the link is shown. This is a temporary launch guard: after the second blog post is published, remove the conditional and render the Blog item unconditionally. Create a blog article layout that composes `BaseLayout`, `SiteHeader`, and `SiteFooter`, and add focused global CSS for:
 
 - Index summaries and optional feature images
 - Article header, dates, optional Draft label, and feature image
@@ -93,12 +93,12 @@ Add RSS auto-discovery to `BaseLayout`. A hand-built XML implementation was cons
 
 Extend the existing Node test suite rather than adding a test framework. Verification will cover:
 
-- `/blog/index.html`, navigation, empty state, and responsive semantic structure
+- `/blog/index.html`, its empty state, and responsive semantic structure
 - Canonical URLs on the homepage, information pages, blog index, and any generated article fixture
 - Required post metadata validation at the collection boundary
 - Production exclusion of a known draft from routes, index, and RSS
 - RSS structure, ordering, and canonical links
-- Shared navigation and current-section semantics
+- Shared navigation with no Blog item when zero posts are published, plus a visible and current-aware Blog item in a published-post fixture
 - Article metadata, new-tab store protections, local assets, and horizontal-overflow checks during browser review
 
 Keep an explicit draft example or documented post template in the repository so authors can copy the metadata shape without publishing placeholder content. If no approved published article exists during implementation, article-route rendering will be exercised with a temporary test fixture or added to the verification suite alongside the first approved post, without publishing invented copy.
@@ -108,7 +108,7 @@ Keep an explicit draft example or documented post template in the repository so 
 - **[Risk] Draft filtering is implemented inconsistently and leaks a post** -> Centralize visibility and ordering, consume it from routes/index/feed, and test a known draft against all production surfaces.
 - **[Risk] A feature image makes builds or the repository unnecessarily large** -> Keep originals in `src/assets/blog/`, use Astro optimization, and document practical image dimensions and file-size guidance.
 - **[Risk] The same content remains reachable on two domains before the redirect** -> Emit `boldlovefarm.com` canonical URLs everywhere and use the same origin in RSS.
-- **[Risk] A five-item navigation becomes crowded on narrow screens** -> Reuse the existing wrapping navigation, add focused responsive checks, and adjust only spacing needed for the new item.
+- **[Risk] The eventual five-item navigation becomes crowded on narrow screens** -> Reuse the existing wrapping navigation, exercise the published-post navigation in focused responsive checks, and adjust only spacing needed for the new item.
 - **[Risk] Repository editing is inconvenient for another future author** -> Keep Markdown and metadata intentionally simple; consider a CMS as a separate change only when a real browser-authoring requirement appears.
 - **[Trade-off] No scheduled publication** -> A post becomes public only after `draft` is set to false and a build is deployed, which is explicit and predictable but requires a maintainer action.
 - **[Trade-off] No initial pagination or taxonomy** -> The index stays simpler now; these can be added later without changing stable article routes.
@@ -116,7 +116,7 @@ Keep an explicit draft example or documented post template in the repository so 
 ## Migration Plan
 
 1. Add the content collection, shared visibility logic, optional draft template, blog routes, article layout, styles, canonical metadata, and RSS feed.
-2. Extend navigation, generated-output tests, and publishing documentation.
+2. Extend navigation with the temporary published-post guard, generated-output tests for both guarded and visible states, and publishing documentation that records when to remove the guard.
 3. Run the existing build and tests, strict OpenSpec validation, and desktop/narrow browser review.
 4. Deploy the identical build through the existing two-repository workflow when the broader branch is approved for production.
 5. Confirm canonical metadata and Plausible pageviews on both domains, and confirm the RSS feed and GrownBy outbound click tracking on `boldlovefarm.com`.

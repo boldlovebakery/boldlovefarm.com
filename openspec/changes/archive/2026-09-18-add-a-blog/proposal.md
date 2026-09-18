@@ -6,7 +6,7 @@ Bold Love needs a durable place to publish farm, bakery, partner, and food stori
 
 - Add a Markdown-authored blog with a newest-first index at `/blog/` and stable post pages at `/blog/<slug>/`.
 - Add validated post metadata for title, description, publication date, optional update date, optional feature image and alternative text, and draft state.
-- Add Blog to the shared primary navigation and identify it as the current section on blog pages.
+- Add Blog to the shared primary navigation once at least one post is published, keep the link hidden while the blog has no published posts, and identify Blog as the current section on blog pages when the link is shown.
 - Give blog posts the established Bold Love presentation, responsive behavior, metadata, and a prominent path to the online store.
 - Publish an RSS feed for non-draft posts and advertise it through document metadata.
 - Establish `boldlovefarm.com` as the canonical origin for generated pages and blog feed URLs while both domains temporarily serve the same build.
@@ -19,8 +19,8 @@ Bold Love needs a durable place to publish farm, bakery, partner, and food stori
 - `site-blog`: Markdown post authoring, blog index and post routes, drafts, article presentation and metadata, RSS publication, store navigation, and canonical-domain behavior.
 
 ### Modified Capabilities
-- `astro-static-site`: Extend homepage navigation with the Blog destination.
-- `site-information-pages`: Extend shared information-page navigation with the Blog destination.
+- `astro-static-site`: Extend homepage navigation with the Blog destination after the first post is published.
+- `site-information-pages`: Extend shared information-page navigation with the Blog destination after the first post is published.
 
 ## Impact
 

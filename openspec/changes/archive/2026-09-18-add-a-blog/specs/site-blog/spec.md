@@ -66,14 +66,19 @@ The blog index SHALL order published posts from newest to oldest and present eac
 - **AND** the rest of the shared page experience remains complete
 
 ### Requirement: Integrate blog navigation
-The shared primary navigation SHALL provide a clearly labeled Blog link to `/blog/`, and blog index and article pages SHALL identify Blog as the current section without relying on color alone.
+The shared primary navigation SHALL omit the Blog link while no posts are published and SHALL provide a clearly labeled Blog link to `/blog/` once at least one post is published. When the link is present, blog index and article pages SHALL identify Blog as the current section without relying on color alone. Draft posts MUST NOT make the navigation link visible.
 
-#### Scenario: Discover the blog from an existing page
-- **WHEN** a visitor uses primary navigation on the homepage or an information page
-- **THEN** a visible Blog link navigates to `/blog/`
+#### Scenario: Keep an unpublished blog out of shared navigation
+- **WHEN** no blog posts are published
+- **THEN** shared primary navigation does not show a Blog link
+- **AND** a local draft does not change that navigation state
+
+#### Scenario: Discover the blog after publication
+- **WHEN** at least one blog post is published
+- **THEN** shared primary navigation provides a visible Blog link to `/blog/`
 
 #### Scenario: Identify the blog section
-- **WHEN** a visitor is on the blog index or a blog article
+- **WHEN** a visitor is on the blog index or a blog article while the Blog navigation item is available
 - **THEN** the Blog navigation item is visibly distinguished
 - **AND** the current-section state is exposed semantically
 
